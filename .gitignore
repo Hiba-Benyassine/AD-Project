@@ -1,0 +1,19 @@
+# Python cache and virtual environments
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Local data outputs
+/data/bronze/*.json
+/data/silver/*.json
+/data/gold/*.json
+
+# Airflow runtime artifacts
+airflow/logs/
+airflow/airflow.db
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/

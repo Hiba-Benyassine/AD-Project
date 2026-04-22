@@ -1,0 +1,20 @@
+# Core HTTP and HTML parsing
+requests==2.32.3
+beautifulsoup4==4.12.3
+lxml==5.2.2
+
+# Data processing
+pandas==2.2.2
+python-dateutil==2.9.0.post0
+
+# Optional language detection for Silver quality
+langdetect==1.0.9
+
+# Object storage client for MinIO/S3
+boto3==1.34.162
+
+# PostgreSQL load layer
+psycopg2-binary==2.9.9
+
+# Orchestration local development helpers
+apache-airflow==2.9.2
