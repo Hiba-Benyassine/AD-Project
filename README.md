@@ -1,5 +1,5 @@
 # Distributed Sports Data Platform
-eeeeeeeeeeeeee
+
 ## 1) Project Goal
 This project is an end-to-end Data Engineering platform focused on **sports news**.
 It automatically collects articles, stores raw data, cleans and enriches records,
