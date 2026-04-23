@@ -1,0 +1,515 @@
+{
+  "metadata": {
+    "total_articles": 50,
+    "scraped_at": "2026-04-24T00:33:48.695543",
+    "source": "ESPN",
+    "classification_method": "URL parsing (100% accuracy)",
+    "sports_distribution": {
+      "football": 24,
+      "tennis": 23,
+      "basketball": 3
+    }
+  },
+  "articles": [
+    {
+      "title": "Watchability Rankings, 2025-26: How much fun is your team this season?",
+      "date": "2026-04-23T17:58:18-05:00",
+      "content": "The Premier League's been a little boring at times this season, but there's brilliant, must-see soccer all over Europe if you know where to look. So check out our latest Watchability Rankings!",
+      "author": "Bill Connelly",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48564694/soccer-watchability-ranking-index-premier-league-laliga-bundesliga-serie-ligue-1-bill-connelly",
+      "scraped_at": "2026-04-24T00:33:47.736407"
+    },
+    {
+      "title": "WC final tickets listed on FIFA resale at over $2M",
+      "date": "2026-04-23T19:05:15-05:00",
+      "content": "FIFA's resale site has four tickets on sale for the World Cup final for just under $2.3 million each.",
+      "author": "ESPN News Services",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48572372/world-cup-final-tickets-listed-fifa-resale-2-million",
+      "scraped_at": "2026-04-24T00:33:47.736439"
+    },
+    {
+      "title": "Italy rejects 'shameful' idea to replace Iran at WC",
+      "date": "2026-04-23T19:05:15-05:00",
+      "content": "Italian sports officials say four-time champion Italy is not interested in replacing Iran at the upcoming World Cup following a suggestion to that effect by a Trump administration official.",
+      "author": "ESPN News Services",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48571163/italy-replacing-iran-world-cup-not-appropriate-sports-minister",
+      "scraped_at": "2026-04-24T00:33:47.736460"
+    },
+    {
+      "title": "Klopp: New NYRB facility made me miss coaching",
+      "date": "2026-04-23T19:05:15-05:00",
+      "content": "Former Liverpool boss Jurgen Klopp said the New York Red Bulls' new training facility is so good that it almost had him wanting to get back into coaching.",
+      "author": "ESPN News Services",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48572112/jurgen-klopp-new-york-red-bulls-training-center-brazil-world-cup",
+      "scraped_at": "2026-04-24T00:33:47.736475"
+    },
+    {
+      "title": "Barça's Yamal out for season; WC not in peril",
+      "date": "2026-04-23T19:05:16-05:00",
+      "content": "Barcelona have confirmed that Lamine Yamal will miss the rest of the season with injury, but is expected to be available for this summer's World Cup.",
+      "author": "ESPN",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48569662/barcelona-lamine-yamal-season-expected-fit-world-cup",
+      "scraped_at": "2026-04-24T00:33:47.736490"
+    },
+    {
+      "title": "Amnesty Int'l issues WC travel advisory for U.S.",
+      "date": "2026-04-23T19:05:15-05:00",
+      "content": "Amnesty International and dozens of U.S. civil and human rights groups issued a \"World Cup travel advisory\" Thursday, warning tournament visitors of \"rising authoritarianism and increasing violence\" in the United States.",
+      "author": "ESPN News Services",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/espn/story/_/id/48573705/amnesty-international-world-cup-travel-advisory-us",
+      "scraped_at": "2026-04-24T00:33:47.736505"
+    },
+    {
+      "title": "Atlante back in Liga MX after 12 years in 2nd tier",
+      "date": "2026-04-23T19:05:16-05:00",
+      "content": "Mexican second-division side Atlante will return to Liga MX for the first time in over a decade after the league's owners approved the purchase of franchise rights from Mazatlan FC.",
+      "author": "Cesar Hernandez",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48574095/atlante-returning-liga-mx-13-years-2nd-tier",
+      "scraped_at": "2026-04-24T00:33:47.736518"
+    },
+    {
+      "title": "Bright has Miami ban extended for racist language",
+      "date": "2026-04-23T19:05:16-05:00",
+      "content": "MLS suspended midfielder Yannick Bright for one additional match for violating the Non-Discrimination Policy during the match between the Colorado Rapids and Inter Miami CF on Saturday, April 18.",
+      "author": "Lizzy Becherano",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48572062/inter-miami-bright-gets-additional-ban-racist-language",
+      "scraped_at": "2026-04-24T00:33:47.736833"
+    },
+    {
+      "title": "👨‍👦Could Cristiano Jr. play with dad at Al Nassr?",
+      "date": "2026-04-23T19:05:15-05:00",
+      "content": "Cristiano Ronaldo has won a littany of trophies and personal honours, but he could yet break new ground by playing first-team football with his son, Cristiano Jr.",
+      "author": "Chris Wright",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48559923/cristiano-ronaldo-al-nassr-cristiano-ronaldo-jr-father-son-soccer",
+      "scraped_at": "2026-04-24T00:33:47.736868"
+    },
+    {
+      "title": "Man City rely on Jérémy Doku for chances, but now he wants to add goals",
+      "date": "2026-04-23T13:23:33-05:00",
+      "content": "Manchester City winger Jérémy Doku is one of the best dribblers in the world, but he tells ESPN that he wants to add goals to his arsenal as well.",
+      "author": "Rob Dawson",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48568161/man-city-rely-jeremy-doku-chances-now-wants-add-goals",
+      "scraped_at": "2026-04-24T00:33:47.736886"
+    },
+    {
+      "title": "Manchester City go top, but it's still a title race of fine margins",
+      "date": "2026-04-23T13:23:33-05:00",
+      "content": "Man City sit atop the Premier League with five games to go, but their race with Arsenal might go until the end.",
+      "author": "Rob Dawson",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48564199/manchetser-city-go-top-table-title-race-fine-margins",
+      "scraped_at": "2026-04-24T00:33:47.736902"
+    },
+    {
+      "title": "The Gab & Juls draft: Picking from stars born in 2004, who is No. 1 overall?",
+      "date": "2026-04-23T13:24:00-05:00",
+      "content": "With the NFL draft beginning Thursday night, it's time for the fifth annual Gab & Juls Draft! This time, they're picking players born in 2004... who did they select, and why?",
+      "author": "Gabriele Marcotti",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48562056/soccer-draft-gab-marcotti-julien-laurens-2004-players-joao-neves-gavi-nico-paz",
+      "scraped_at": "2026-04-24T00:33:47.736917"
+    },
+    {
+      "title": "Weekend predictions: Will Rosenior exit stop Chelsea slide? Arsenal's collapse to continue?",
+      "date": "2026-04-23T14:38:06-05:00",
+      "content": "Chelsea play their first match post-Rosenior, while Arsenal try to rebound from a crushing loss in the Premier League title race. Julien Laurens makes his predictions.",
+      "author": "Julien Laurens",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48563248/weekend-predictions-premier-league-fa-cup-chelsea-rosenior-arsenal",
+      "scraped_at": "2026-04-24T00:33:47.736929"
+    },
+    {
+      "title": "What's at stake in Europe's top soccer leagues: Titles, UCL qualification, relegation",
+      "date": "2026-04-23T14:38:06-05:00",
+      "content": "How are the battles for major honors, Champions League spots and relegation shaping up across the continent?",
+      "author": "ESPN",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48109229/tracking-europe-top-soccer-leagues-2025-26-title-races-champions-league-relegation-premier-league-laliga-bundesliga",
+      "scraped_at": "2026-04-24T00:33:47.736943"
+    },
+    {
+      "title": "Why Rosenior failed at Chelsea, and what club must change for next manager",
+      "date": "2026-04-23T10:33:02-05:00",
+      "content": "Liam Rosenior couldn't win over Chelsea's players or fans as manager. Now the club's owners must reevaluate the structure that led to his appointment.",
+      "author": "James Olley",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48569417/why-liam-rosenior-failed-chelsea-owners-blueco-change-next-manager",
+      "scraped_at": "2026-04-24T00:33:47.736955"
+    },
+    {
+      "title": "Rosenior was out of his depth at Chelsea, and it was obvious from the start",
+      "date": "2026-04-23T10:33:02-05:00",
+      "content": "Liam Rosenior never had the aura of a Chelsea manager, but the club hired him anyway.",
+      "author": "Mark Ogden",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48562222/liam-rosenior-was-depth-chelsea-was-obvious-start",
+      "scraped_at": "2026-04-24T00:33:47.736967"
+    },
+    {
+      "title": "Transfer rumors, news: Bournemouth join race to sign Tillman",
+      "date": "2026-04-23T12:22:20-05:00",
+      "content": "USMNT's Malik Tillman continues to be in demand by several Premier League clubs. Transfer Talk has the latest.",
+      "author": "ESPN",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48567959/transfer-rumors-news-replace-rosenior-chelsea-manager",
+      "scraped_at": "2026-04-24T00:33:47.736982"
+    },
+    {
+      "title": "Who gets picked in a NFL-style Premier League draft?",
+      "date": "2026-04-23T12:22:20-05:00",
+      "content": "In the spirit of NFL draft week, we created a Premier League version with all the intrigue of the real thing.",
+      "author": "Sam Tighe",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48549547/if-premier-league-did-nfl-style-draft-team-select",
+      "scraped_at": "2026-04-24T00:33:47.736994"
+    },
+    {
+      "title": "Are Spurs better off in relegation fight without their captain?",
+      "date": "2026-04-23T12:22:27-05:00",
+      "content": "Following his season-ending knee injury, has Cristian Romero played his last game for Spurs?",
+      "author": "James Olley",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48551132/will-cristian-romero-play-tottenham-hotspur-again-better-him",
+      "scraped_at": "2026-04-24T00:33:47.737004"
+    },
+    {
+      "title": "UWCL semifinal predictions: Will Barcelona batter Bayern? Arsenal to beat OL Lyonnes?",
+      "date": "2026-04-23T03:26:13-05:00",
+      "content": "We've seen these matchups already before this season but, now stakes are even higher, how will these games play out across the two legs?",
+      "author": "Multiple contributors",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48550437/uwcl-semifinal-predictions-barcelona-batter-bayern-arsenal-beat-ol-lyonnes",
+      "scraped_at": "2026-04-24T00:33:47.737016"
+    },
+    {
+      "title": "The mental toll of injury nightmares that threaten players' World Cup dreams",
+      "date": "2026-04-22T08:44:45-05:00",
+      "content": "With the World Cup less than two months away, many players are in a race against time to recover from injury for soccer's showpiece event.",
+      "author": "Jeff Carlisle",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48553612/world-cup-injuries-usmnt-sergino-dest-patrick-agyemang-stu-holden-tyler-adams",
+      "scraped_at": "2026-04-24T00:33:47.737028"
+    },
+    {
+      "title": "How Sargent's transfer inadvertently boosted Australia",
+      "date": "2026-04-22T08:44:45-05:00",
+      "content": "Josh Sargent's acrimonious exit from Norwich may have dealt a big blow to the USMNT's World Cup ambitions.",
+      "author": "Joey Lynch",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48555579/josh-sargent-norwich-city-exit-helped-usmnt-world-cup-rivals",
+      "scraped_at": "2026-04-24T00:33:47.737039"
+    },
+    {
+      "title": "How do the Herons plan to stay on top after Messi?",
+      "date": "2026-04-23T00:12:26-05:00",
+      "content": "Some day, Inter Miami won't have Lionel Messi to lean on or a new stadium to open. How will the club stay on top of North American soccer then?",
+      "author": "Lizzy Becherano",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48552951/inter-miami-3-herons-future-lionel-messi-flashy-new-nu-stadium-home",
+      "scraped_at": "2026-04-24T00:33:47.737051"
+    },
+    {
+      "title": "From Premier League champions to League One",
+      "date": "2026-04-23T00:12:50-05:00",
+      "content": "It feels like only yesterday that Leicester were the Cinderellas of world soccer, winning the Premier League at 5000/1 odds. But on Tuesday, the Foxes' relegation to the third tier was confirmed.",
+      "author": "Mark Ogden",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48554834/leicesters-fall-grace-prem-champions-league-one",
+      "scraped_at": "2026-04-24T00:33:47.737064"
+    },
+    {
+      "title": "U.S. to host Hungary in Billie Jean King playoffs",
+      "date": "2026-04-23T07:44:39-05:00",
+      "content": "The United States will host Hungary in the Billie Jean King Cup playoffs in November when the record 18-time champion looks to get back on track in women's team tennis.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48569480/us-host-hungary-billie-jean-king-cup-playoffs",
+      "scraped_at": "2026-04-24T00:33:48.315190"
+    },
+    {
+      "title": "'Hey Jude:' Jodar shouts out Bellingham after win",
+      "date": "2026-04-22T21:03:34-05:00",
+      "content": "After clinching a first-round win on debut at the Madrid Open, Spain's newest tennis sensation Rafael Jodar raised his arms and opened them wide to imitate the goal celebration England and Real Madrid soccer star Jude Bellingham.",
+      "author": "ESPN News Services",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48565198/jodar-wins-madrid-bellingham-watches",
+      "scraped_at": "2026-04-24T00:33:48.315213"
+    },
+    {
+      "title": "Venus, 45, sets sights on French Open after loss",
+      "date": "2026-04-21T19:27:07-05:00",
+      "content": "Venus Williams, 45, said Tuesday after losing her 10th straight singles match that she is considering playing at Roland Garros next month.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48554782/venus-williams-eyes-french-open-loss-madrid",
+      "scraped_at": "2026-04-24T00:33:48.315229"
+    },
+    {
+      "title": "Alcaraz, Sabalenka, PSG win top Laureus awards",
+      "date": "2026-04-20T17:12:46-05:00",
+      "content": "Tennis players Carlos Alcaraz and Aryna Sabalenka were named Sportsman and Sportswoman of the Year at the Laureus awards on Monday while Paris Saint-Germain was the Team of the Year.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48543900/carlos-alcaraz-aryna-sabalenka-psg-win-top-laureus-awards",
+      "scraped_at": "2026-04-24T00:33:48.315243"
+    },
+    {
+      "title": "Alcaraz waits on wrist tests as French Open nears",
+      "date": "2026-04-20T17:08:48-05:00",
+      "content": "Defending two-time champion Carlos Alcaraz has put his participation at the French Open in doubt because of a right wrist injury, and medical tests in the next few days will determine whether Alcaraz will be able to play in the Grand Slam tournament.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48543717/carlos-alcaraz-waits-wrist-tests-french-open-awaits",
+      "scraped_at": "2026-04-24T00:33:48.315258"
+    },
+    {
+      "title": "Shelton stops Cobolli to win Munich Open title",
+      "date": "2026-04-19T10:36:24-05:00",
+      "content": "Ben Shelton bounced back from disappointment last year by defeating Flavio Cobolli 6-2, 7-5 to win the Munich Open.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48531189/ben-shelton-beats-flavio-cobolli-win-munich-open",
+      "scraped_at": "2026-04-24T00:33:48.315271"
+    },
+    {
+      "title": "Rybakina beats Muchova for 2nd title in Stuttgart",
+      "date": "2026-04-19T09:23:40-05:00",
+      "content": "Elena Rybakina defeated Karolina Muchova 7-5, 6-1 to win the Porsche Tennis Grand Prix for the second time.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48530942/elena-rybakina-beats-muchova-win-porsche-tennis-grand-prix",
+      "scraped_at": "2026-04-24T00:33:48.315282"
+    },
+    {
+      "title": "Eala sweeps past Pavlyuchenkova in Mutua Madrid Open first round",
+      "date": "2026-04-22T10:14:04-05:00",
+      "content": "Alex Eala is through to the second round of the Mutua Madrid Open after a straight sets win over Anastasia Pavlyuchenkova.",
+      "author": "Miguel Alfonso Caramoan",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48560327/alex-eala-sweeps-anastasia-pavlyuchenkova-mutua-madrid-open-first-round",
+      "scraped_at": "2026-04-24T00:33:48.315293"
+    },
+    {
+      "title": "Furry, feathered and winged: Creatures run loose in stadiums",
+      "date": "2026-04-20T21:45:23-05:00",
+      "content": "A goose patrolled Wrigley Field during the third inning of Phillies-Cubs. It's not the first time a creature stole the show at a sporting event.",
+      "author": "ESPN",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/nfl/story/_/id/28074905/squirrels-cats-dogs-bees-animals-ran-loose-stadiums",
+      "scraped_at": "2026-04-24T00:33:48.315305"
+    },
+    {
+      "title": "Alcaraz, Djokovic skip Madrid Open with injuries",
+      "date": "2026-04-17T11:00:23-05:00",
+      "content": "Carlos Alcaraz (wrist) and Novak Djokovic (shoulder) have both pulled out of the Madrid Open because of lingering injuries.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48511022/novak-djokovic-pulls-madrid-open-injury",
+      "scraped_at": "2026-04-24T00:33:48.315318"
+    },
+    {
+      "title": "French Open increases total purse to $72.1 million",
+      "date": "2026-04-16T09:32:48-05:00",
+      "content": "The prize money for the French Open has increased by about 10% for an overall pot of 61.7 million euros ($72.1 million), organizers said.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48502052/french-open-increases-total-purse-721-million",
+      "scraped_at": "2026-04-24T00:33:48.315329"
+    },
+    {
+      "title": "Jamie Murray, Andy's brother, retires from tennis",
+      "date": "2026-04-15T13:10:25-05:00",
+      "content": "Jamie Murray, who became the first British doubles player to reach the top of the world rankings, has joined his brother Andy in retirement.",
+      "author": "ESPN",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48494158/british-doubles-great-jamie-murray-andy-murray-brother-retires-tennis",
+      "scraped_at": "2026-04-24T00:33:48.315341"
+    },
+    {
+      "title": "Alcaraz (wrist) withdraws from Barcelona Open",
+      "date": "2026-04-15T12:38:30-05:00",
+      "content": "Carlos Alcaraz withdrew from the Barcelona Open after undergoing a test on his right wrist, the tournament announced Wednesday.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48494817/carlos-alcaraz-withdraws-barcelona-open-due-wrist",
+      "scraped_at": "2026-04-24T00:33:48.315351"
+    },
+    {
+      "title": "Italy to host Wimbledon tuneup on grass in 2028",
+      "date": "2026-04-14T14:15:11-05:00",
+      "content": "The Italian Tennis and Padel Federation has purchased the rights to an ATP event in Brussels with plans to stage a Wimbledon tuneup on grass courts in June 2028.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48485294/italy-host-wimbledon-tuneup-grass-starting-2028",
+      "scraped_at": "2026-04-24T00:33:48.315363"
+    },
+    {
+      "title": "Eala bows out in Stuttgart as Fernandez dominates Filipina-rooted clash",
+      "date": "2026-04-14T13:00:23-05:00",
+      "content": "Alex Eala has been eliminated from the Porsche Tennis Grand Prix in Stuttgart following defeat to Leylah Fernandez.",
+      "author": "Miguel Alfonso Caramoan",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48485049/alex-eala-bows-stuttgart-leylah-fernandez-dominates-filipina-rooted-clash",
+      "scraped_at": "2026-04-24T00:33:48.315373"
+    },
+    {
+      "title": "Becker's '89 US Open trophy sells for record $357K",
+      "date": "2026-04-13T15:46:21-05:00",
+      "content": "Boris Becker's 1989 US Open men's singles trophy sold for $357,546 (including buyer's premium) Sunday, the most ever paid for a tennis trophy.",
+      "author": "Dan Hajducky",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48476639/boris-becker-1989-us-open-men-singles-trophy-sells-record-357546",
+      "scraped_at": "2026-04-24T00:33:48.315384"
+    },
+    {
+      "title": "ATP hits Medvedev in wallet for smashing racket",
+      "date": "2026-04-13T13:38:48-05:00",
+      "content": "Former No. 1 Daniil Medvedev was fined $7,000 for unsportsmanlike conduct after he smashed his racket seven times during a loss at the Monte Carlo Masters.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48476025/medvedev-fined-smashing-racket-monte-carlo-masters",
+      "scraped_at": "2026-04-24T00:33:48.315395"
+    },
+    {
+      "title": "Sinner outduels Alcaraz to retake No. 1 ranking",
+      "date": "2026-04-13T07:43:05-05:00",
+      "content": "Jannik Sinner reclaimed the world No. 1 ranking by overpowering Carlos Alcaraz to win the Monte-Carlo Masters final.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48466880/jannik-sinner-returns-no-1-monte-carlo-win-alcaraz",
+      "scraped_at": "2026-04-24T00:33:48.315405"
+    },
+    {
+      "title": "British teenager scores major upset in BJK Cup",
+      "date": "2026-04-12T06:35:30-05:00",
+      "content": "British teenager Mika Stojsavljevic scored a major upset over Australia's Talia Gibson on her Billie Jean King Cup debut in Melbourne.",
+      "author": "PA",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48445239/british-teen-mika-stojsavljevic-scores-major-upset-billie-jean-king-cup",
+      "scraped_at": "2026-04-24T00:33:48.315416"
+    },
+    {
+      "title": "Eala loses in a close call against Ostapenko at Linz Open",
+      "date": "2026-04-08T11:35:36-05:00",
+      "content": "Alex Eala has suffered defeat to former French Open champion Jelena Ostapenko at the Linz Open round of 16.",
+      "author": "Miguel Alfonso Caramoan",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48429184/alex-eala-loses-close-call-jelena-ostapenko-linz-openalex-eala-loses-close-call-jelena-ostapenko-linz-open",
+      "scraped_at": "2026-04-24T00:33:48.315427"
+    },
+    {
+      "title": "Medvedev mangles racket during 6-0, 6-0 loss",
+      "date": "2026-04-08T09:36:39-05:00",
+      "content": "Former No. 1 Daniil Medvedev lost his temper, smashed his racket on the red clay court seven successive times and deposited the mangled frame in a trash bin midway through a 6-0, 6-0 loss to Matteo Berrettini at the Monte Carlo Masters.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48427919/medvedev-smashes-racket-double-bagel-loss-berrettini",
+      "scraped_at": "2026-04-24T00:33:48.315441"
+    },
+    {
+      "title": "Eala opens clay court campaign with win over Grabher at Linz Open",
+      "date": "2026-04-07T17:20:42-05:00",
+      "content": "Alex Eala's clay court campaign got off to a winning start with a 6-4, 6-3 victory over Julia Grabher at the Linz Open.",
+      "author": "Miguel Alfonso Caramoan",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48423144/alex-eala-opens-clay-court-campaign-win-julia-grabher-linz-open",
+      "scraped_at": "2026-04-24T00:33:48.315452"
+    },
+    {
+      "title": "The Masters' iconic menu tops list of notable sport-refreshment combos",
+      "date": "2026-04-07T11:09:21-05:00",
+      "content": "The Masters concession menu is notable for just how affordable it is, but the tournament isn't the only event associated with a signature food or beverage item.",
+      "author": "ESPN Staff",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/46064085/signature-sport-food-drink-us-open-honey-deuce-derby-mint-julep-masters-pimento-cheese",
+      "scraped_at": "2026-04-24T00:33:48.315463"
+    },
+    {
+      "title": "Lakers' Reaves upgraded to questionable for G3",
+      "date": "2026-04-23T18:40:52-05:00",
+      "content": "Lakers guard Austin Reaves, who hasn't been sidelined since straining his left oblique April 2, was upgraded to questionable for Game 3, while Rockets star Kevin Durant was listed as questionable because of a sprained left ankle.",
+      "author": "Dave McMenamin",
+      "category": "basketball",
+      "source": "ESPN",
+      "url": "https://www.espn.com/nba/story/_/id/48574069/lakers-reaves-rockets-durant-questionable-play-game-3",
+      "scraped_at": "2026-04-24T00:33:48.693591"
+    },
+    {
+      "title": "Sources: Bucks finalizing deal to hire Jenkins",
+      "date": "2026-04-23T18:40:52-05:00",
+      "content": "The Milwaukee Bucks are finalizing a deal to hire Taylor Jenkins as the franchise's new head coach, sources told ESPN on Thursday.",
+      "author": "Shams Charania and Ramona Shelburne",
+      "category": "basketball",
+      "source": "ESPN",
+      "url": "https://www.espn.com/nba/story/_/id/48572946/bucks-finalizing-deal-hire-taylor-jenkins",
+      "scraped_at": "2026-04-24T00:33:48.693612"
+    },
+    {
+      "title": "Wemby to travel with Spurs while in protocol",
+      "date": "2026-04-23T18:40:52-05:00",
+      "content": "Victor Wembanyama will travel with the Spurs to Portland for games this weekend, even while continuing to complete the steps mandated by the concussion protocol.",
+      "author": "Michael C. Wright",
+      "category": "basketball",
+      "source": "ESPN",
+      "url": "https://www.espn.com/nba/story/_/id/48571593/spurs-victor-wembanyama-travel-concussion-protocol",
+      "scraped_at": "2026-04-24T00:33:48.693628"
+    }
+  ]
+}
