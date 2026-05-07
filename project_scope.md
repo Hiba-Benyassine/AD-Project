@@ -113,7 +113,7 @@ Certains sites permettent une classification immédiate :
 - **ESPN**: Adapter template pour structure site américain
 
 #### Tâche 2: Nettoyage des Données
-**POURQUOI**: Préparer les données brutes pour analyse (couche Silver)  
+**POURQUOI**: Préparer les données brutes pour analyse (couche Silver)  6
 **COMMENT**: Suppression HTML, minuscule, ponctuation, filtrage articles invalides  
 **RÉSULTAT ATTENDU**: Données textuelles propres et normalisées
 
