@@ -1,6 +1,10 @@
 # Dashboard Guide (Metabase)
 
-This folder stores dashboard notes and future exported assets.
+This folder stores the dashboard guide and presentation assets.
+
+## Quick Files
+- architecture.md (Mermaid diagram)
+- presentation_outline.md (simple slide plan)
 
 ## Suggested Dashboard Tabs
 1. Trends per day
@@ -27,6 +31,13 @@ This folder stores dashboard notes and future exported assets.
 - Chart: table
 - Columns: `published_at`, `source`, `category`, `title`, `language`
 
+5. Top words per category
+- Source: `top_words`
+- Chart: bar
+- Dimension: `word`
+- Metric: sum(`count`)
+- Filter: `category`
+
 ## Metabase Setup Quick Steps
 1. Open Metabase at http://localhost:3000
 2. Add PostgreSQL database:
@@ -37,3 +48,7 @@ This folder stores dashboard notes and future exported assets.
 - Password: sports_pass
 3. Sync schema and create questions
 4. Group questions into one dashboard named "Sports Media Monitoring"
+
+## Export
+1. Use the "Share" menu to export as PDF or image
+2. Save exports in this folder
