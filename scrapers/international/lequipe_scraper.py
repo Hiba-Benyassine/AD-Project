@@ -1,49 +1,52 @@
 #!/usr/bin/env python3
 """
 ===============================================
-SCRAPER SPÉCIALISÉ - MSPORT.MA
+SCRAPER SPÉCIALISÉ - L'ÉQUIPE.FR
 ===============================================
 Auteur: Équipe ETL Sport
-Date: 23/04/2026
-Objectif: Scraper pour MSport.ma
+Date: 24/04/2026
+Objectif: Scraper pour L'Équipe.fr
 
 Hérite de BaseScraper - À adapter selon la structure HTML
-URLs directes: /football/, /tennis/, etc.
+URLs directes: /Football/, /Tennis/, /Basket/, etc.
 """
 
+import sys
+import os
 from typing import List
+
+# Ajouter le chemin courant pour les imports
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from base_scraper import BaseScraper
 
-class MSportScraper(BaseScraper):
+class LequipeScraper(BaseScraper):
     """
     ===============================================
-    SCRAPER SPÉCIALISÉ MSPORT.MA
+    SCRAPER SPÉCIALISÉ L'ÉQUIPE.FR
     ===============================================
     Template à adapter selon la structure réelle du site
     """
     
     def __init__(self):
-        """Initialisation spécifique à MSport"""
+        """Initialisation spécifique à L'Équipe"""
         super().__init__(
-            site_name="MSport",
-            base_url="https://www.msport.ma"
+            site_name="LEquipe",
+            base_url="https://www.lequipe.fr"
         )
         
         # 🎯 URLs directes par sport (à vérifier/adapter)
         self.sport_urls = {
-            "football": "https://www.msport.ma/football",
-            "tennis": "https://www.msport.ma/tennis",
-            "basketball": "https://www.msport.ma/basketball"
+            "football": "https://www.lequipe.fr/Football",
+            "tennis": "https://www.lequipe.fr/Tennis", 
+            "basketball": "https://www.lequipe.fr/Basket"
         }
     
     def get_article_urls(self, max_articles: int = 10) -> List[str]:
         """
         ===============================================
-        RÉCUPÉRATION URLs MSPORT
+        RÉCUPÉRATION URLs L'ÉQUIPE
         ===============================================
-        À ADAPTER: inspecter le HTML de msport.ma
-        
-        Pour l'instant: fallback vers recherche générique
+        À ADAPTER: inspecter le HTML de lequipe.fr
         """
         print(f"🔍 Recherche articles sur {self.base_url}")
         
@@ -57,13 +60,12 @@ class MSportScraper(BaseScraper):
             articles = []
             
             # 🔄 À ADAPTER: trouver les bons sélecteurs CSS
-            # Exemples de patterns communs:
             article_selectors = [
                 'a[href*="/article/"]',
-                'a[href*="/news/"]', 
-                'article a',
-                '.article-item a',
-                '.news-item a'
+                '.article-title a',
+                '.headline a',
+                'h2 a',
+                'h3 a'
             ]
             
             for selector in article_selectors:
@@ -95,15 +97,15 @@ class MSportScraper(BaseScraper):
     def _extract_title(self, soup):
         """
         ===============================================
-        EXTRACTION TITRE MSPORT
+        EXTRACTION TITRE L'ÉQUIPE
         ===============================================
-        À ADAPTER selon les classes CSS de MSport
+        À ADAPTER selon les classes CSS de L'Équipe
         """
         # 🔄 À ADAPTER: trouver les bons sélecteurs
         selectors = [
             'h1.article-title',
-            'h1.title',
-            '.post-title h1',
+            'h1.headline',
+            '.title h1',
             'h1'
         ]
         
@@ -112,83 +114,35 @@ class MSportScraper(BaseScraper):
             if title_elem:
                 return title_elem.get_text().strip()
         
-        # Fallback vers méthode de base
         return super()._extract_title(soup)
-    
-    def _extract_date(self, soup):
-        """
-        ===============================================
-        EXTRACTION DATE MSPORT
-        ===============================================
-        À ADAPTER selon les classes CSS de MSport
-        """
-        # 🔄 À ADAPTER: trouver les bons sélecteurs
-        selectors = [
-            '.post-date',
-            '.article-date', 
-            '.publish-date',
-            'time'
-        ]
-        
-        for selector in selectors:
-            date_elem = soup.select_one(selector)
-            if date_elem:
-                date_str = date_elem.get('datetime') or date_elem.get_text().strip()
-                if date_str:
-                    return self._normalize_date(date_str)
-        
-        # Fallback vers méthode de base
-        return super()._extract_date(soup)
-    
-    def _extract_author(self, soup):
-        """
-        ===============================================
-        EXTRACTION AUTEUR MSPORT
-        ===============================================
-        À ADAPTER selon les classes CSS de MSport
-        """
-        # 🔄 À ADAPTER: trouver les bons sélecteurs
-        selectors = [
-            '.author-name',
-            '.post-author',
-            '.article-author'
-        ]
-        
-        for selector in selectors:
-            author_elem = soup.select_one(selector)
-            if author_elem:
-                return author_elem.get_text().strip()
-        
-        # Fallback vers méthode de base
-        return super()._extract_author(soup)
 
 def main():
     """
     ===============================================
-    TEST SCRAPER MSPORT
+    TEST SCRAPER L'ÉQUIPE
     ===============================================
     À adapter une fois la structure HTML analysée
     """
-    print("🚀 LANCEMENT SCRAPER MSPORT (TEMPLATE)")
-    print("🔄 À ADAPTER: inspecter HTML de www.msport.ma")
+    print("🚀 LANCEMENT SCRAPER L'ÉQUIPE (TEMPLATE)")
+    print("🔄 À ADAPTER: inspecter HTML de www.lequipe.fr")
     print("=" * 60)
     
-    scraper = MSportScraper()
+    scraper = LequipeScraper()
     
     # Test scraping
     articles = scraper.scrape_articles(max_articles=3)
     
     if articles:
         filename = scraper.save_to_json(articles)
-        print(f"\n🎉 SCRAPER MSPORT FONCTIONNEL!")
+        print(f"\n🎉 SCRAPER L'ÉQUIPE FONCTIONNEL!")
         print(f"📁 Fichier: {filename}")
         
     else:
-        print("\n❌ SCRAPER MSPORT - À ADAPTER")
+        print("\n❌ SCRAPER L'ÉQUIPE - À ADAPTER")
         print("🔧 Actions nécessaires:")
-        print("   1. Inspecter HTML de www.msport.ma")
+        print("   1. Inspecter HTML de www.lequipe.fr")
         print("   2. Adapter les sélecteurs CSS")
-        print("   3. Tester les URLs directes /football, /tennis")
+        print("   3. Tester les URLs directes /Football, /Tennis")
 
 if __name__ == "__main__":
     main()

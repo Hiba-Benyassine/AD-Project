@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 ===============================================
-SCRAPER SPÉCIALISÉ - 360SPORT.MA
+SCRAPER SPÉCIALISÉ - 360SPORT.MA 
 ===============================================
 Auteur: Équipe ETL Sport
 Date: 23/04/2026
@@ -14,7 +14,12 @@ Hérite de BaseScraper et ajoute la logique spécifique:
 """
 
 import re
+import sys
+import os
 from typing import List
+
+# Ajouter le chemin courant pour les imports
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from base_scraper import BaseScraper
 
 class Sport360Scraper(BaseScraper):

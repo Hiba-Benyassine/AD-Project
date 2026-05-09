@@ -13,7 +13,8 @@ URLs directes: /sport/football/, /sport/tennis/, etc.
 
 import re
 from typing import List
-from base_scraper import BaseScraper
+from .base_scraper import BaseScraper
+
 
 class LeMatinScraper(BaseScraper):
     """

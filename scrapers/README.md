@@ -1,16 +1,23 @@
 # 📁 Structure des Scrapers - Architecture Modulaire
 
-## 🏗️ Architecture
+## 🏗️ Architecture par Géographie
 
 ```
 scrapers/
-├── base_scraper.py          # 📋 Classe mère (logique commune)
-├── sport360_scraper.py      # ✅ 360Sport.ma (fonctionnel)
-├── msport_scraper.py        # 🔄 MSport.ma (template à adapter)
-├── lematin_scraper.py       # 🔄 LeMatin.ma (template à adapter)
-├── lequipe_scraper.py       # 🔄 L'Équipe.fr (template à adapter)
-├── espn_scraper.py          # 🔄 ESPN.com (template à adapter)
-└── README.md                # 📖 Ce fichier
+├── 🇲🇦 national/                    # Médias marocains
+│   ├── __init__.py                  # Imports nationaux
+│   ├── base_scraper.py              # Classe mère (logique commune)
+│   ├── sport360_scraper.py          # ✅ 360Sport.ma (fonctionnel)
+│   ├── msport_scraper.py            # 🔄 MSport.ma (template à adapter)
+│   └── lematin_scraper.py           # 🔄 LeMatin.ma (template à adapter)
+│
+├── 🌍 international/                # Médias internationaux
+│   ├── __init__.py                  # Imports internationaux
+│   ├── base_scraper.py              # Classe mère (logique commune)
+│   ├── lequipe_scraper.py           # 🔄 L'Équipe.fr (template à adapter)
+│   └── espn_scraper.py              # 🔄 ESPN.com (template à adapter)
+│
+└── README.md                        # 📖 Ce fichier
 ```
 
 ## 🎯 Avantages de cette structure

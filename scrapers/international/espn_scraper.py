@@ -12,6 +12,14 @@ Note:
 - Cette version utilise les flux RSS officiels ESPN sport.
 """
 
+import sys
+import os
+from typing import List
+
+# Ajouter le chemin courant pour les imports
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+from base_scraper import BaseScraper
+
 import re
 import xml.etree.ElementTree as ET
 from datetime import datetime
@@ -19,8 +27,6 @@ from email.utils import parsedate_to_datetime
 from typing import List
 
 import requests
-from base_scraper import BaseScraper
-
 
 class ESPNScraper(BaseScraper):
     """Scraper ESPN sport basé sur les flux RSS."""
