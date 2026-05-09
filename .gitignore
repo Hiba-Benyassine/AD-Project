@@ -3,6 +3,7 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+.env
 
 # Local data outputs
 /data/bronze/*.json

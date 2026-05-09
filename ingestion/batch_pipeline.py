@@ -13,16 +13,21 @@ from __future__ import annotations
 
 import importlib
 import os
+import sys
 from pathlib import Path
 from typing import List
+
+# Add project root to Python path
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import boto3
 from botocore.client import Config
 
 SCRAPER_MODULES: List[str] = [
-    "scrapers.hespress",
-    "scrapers.lematin",
-    "scrapers.cnn",
+    "scrapers.national.sport360_scraper",
+    "scrapers.national.lematin_scraper",
+    "scrapers.international.espn_scraper",
+    "scrapers.international.lequipe_scraper",
 ]
 
 BRONZE_DIR = Path("data/bronze")

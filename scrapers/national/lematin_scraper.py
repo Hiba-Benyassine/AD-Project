@@ -195,6 +195,26 @@ class LeMatinScraper(BaseScraper):
 
         return super()._extract_content(soup)
 
+def run() -> int:
+    """
+    ===============================================
+    FONCTION RUN POUR BATCH PIPELINE
+    ===============================================
+    Fonction appelée par batch_pipeline.py
+    
+    Retourne:
+    - int: nombre d'articles collectés
+    """
+    scraper = LeMatinScraper()
+    articles = scraper.scrape_articles(max_articles=50)
+    
+    if articles:
+        scraper.save_to_json(articles)
+        return len(articles)
+    
+    return 0
+
+
 def main():
     """
     ===============================================

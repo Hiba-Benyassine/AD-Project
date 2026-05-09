@@ -5,15 +5,16 @@ SCRAPER SPÉCIALISÉ - L'ÉQUIPE.FR
 ===============================================
 Auteur: Équipe ETL Sport
 Date: 24/04/2026
-Objectif: Scraper pour L'Équipe.fr
+Objectif: Scraper pour L'Équipe.fr (version RSS robuste)
 
-Hérite de BaseScraper - À adapter selon la structure HTML
-URLs directes: /Football/, /Tennis/, /Basket/, etc.
+Utilise le flux RSS pour être plus stable
 """
 
 import sys
 import os
-from typing import List
+from typing import List, Dict, Optional
+from datetime import datetime
+import time
 
 # Ajouter le chemin courant pour les imports
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -22,9 +23,9 @@ from base_scraper import BaseScraper
 class LequipeScraper(BaseScraper):
     """
     ===============================================
-    SCRAPER SPÉCIALISÉ L'ÉQUIPE.FR
+    SCRAPER SPÉCIALISÉ L'ÉQUIPE.FR (RSS)
     ===============================================
-    Template à adapter selon la structure réelle du site
+    Utilise le flux RSS pour une meilleure stabilité
     """
     
     def __init__(self):
@@ -34,79 +35,86 @@ class LequipeScraper(BaseScraper):
             base_url="https://www.lequipe.fr"
         )
         
-        # 🎯 URLs directes par sport (à vérifier/adapter)
-        self.sport_urls = {
-            "football": "https://www.lequipe.fr/Football",
-            "tennis": "https://www.lequipe.fr/Tennis", 
-            "basketball": "https://www.lequipe.fr/Basket"
+        # 🎯 URLs RSS par section
+        self.rss_urls = {
+            "football": "https://www.lequipe.fr/rss/football.xml",
+            "tennis": "https://www.lequipe.fr/rss/tennis.xml", 
+            "basketball": "https://www.lequipe.fr/rss/basket.xml",
+            "general": "https://www.lequipe.fr/rss/actualites.xml"
         }
     
     def get_article_urls(self, max_articles: int = 10) -> List[str]:
         """
-        ===============================================
-        RÉCUPÉRATION URLs L'ÉQUIPE
-        ===============================================
-        À ADAPTER: inspecter le HTML de lequipe.fr
+        Récupère les URLs des articles depuis le flux RSS de L'Équipe
         """
-        print(f"🔍 Recherche articles sur {self.base_url}")
+        print(f"🔍 Scraping L'Équipe via RSS")
+        
+        urls = []
         
         try:
-            response = self.session.get(self.base_url, timeout=10)
-            response.raise_for_status()
+            import xml.etree.ElementTree as ET
             
-            from bs4 import BeautifulSoup
-            soup = BeautifulSoup(response.content, 'html.parser')
-            
-            articles = []
-            
-            # 🔄 À ADAPTER: trouver les bons sélecteurs CSS
-            article_selectors = [
-                'a[href*="/article/"]',
-                '.article-title a',
-                '.headline a',
-                'h2 a',
-                'h3 a'
-            ]
-            
-            for selector in article_selectors:
-                links = soup.select(selector)
-                if links:
-                    print(f"✅ Sélecteur trouvé: {selector}")
-                    for link in links[:max_articles]:
-                        href = link.get('href')
-                        if href:
-                            # Construire URL complet
-                            if href.startswith('/'):
-                                full_url = self.base_url + href
-                            elif not href.startswith('http'):
-                                full_url = self.base_url + '/' + href
-                            else:
-                                full_url = href
-                            
-                            if full_url not in articles:
-                                articles.append(full_url)
-                    break
-            
-            print(f"✅ {len(articles)} URLs trouvées")
-            return articles
+            # Essayer le flux general RSS
+            for section, rss_url in self.rss_urls.items():
+                print(f"  📡 Section: {section}")
+                try:
+                    response = self.session.get(rss_url, timeout=10)
+                    response.raise_for_status()
+                    
+                    # Parser le XML
+                    root = ET.fromstring(response.content)
+                    
+                    # Extraire les liens (RSS utilise <link> ou <enclosure>)
+                    namespaces = {
+                        '': 'http://www.w3.org/2005/Atom',
+                        'content': 'http://purl.org/rss/1.0/modules/content/'
+                    }
+                    
+                    # Chercher les liens dans les items
+                    items = root.findall('.//item')
+                    if not items:
+                        items = root.findall('.//entry')
+                    
+                    for item in items[:max_articles]:
+                        # Chercher le lien
+                        link_elem = item.find('link')
+                        if link_elem is None:
+                            link_elem = item.find('{http://www.w3.org/2005/Atom}link')
+                        
+                        if link_elem is not None:
+                            href = link_elem.text or link_elem.get('href')
+                            if href and href not in urls:
+                                urls.append(href)
+                    
+                    if len(urls) >= max_articles:
+                        break
+                        
+                except Exception as e:
+                    print(f"    ⚠️  Erreur RSS {section}: {e}")
+                    continue
             
         except Exception as e:
-            print(f"❌ Erreur récupération URLs: {e}")
-            return []
+            print(f"❌ Erreur parsing RSS: {e}")
+        
+        # Fallback: utiliser des URLs connues de L'Équipe
+        if not urls:
+            print("  📌 Utilisation URLs de fallback")
+            urls = [
+                "https://www.lequipe.fr/Football/",
+                "https://www.lequipe.fr/Tennis/",
+                "https://www.lequipe.fr/Basket/",
+            ][:max_articles]
+        
+        print(f"✅ {len(urls)} URLs récupérées")
+        return urls
     
     def _extract_title(self, soup):
-        """
-        ===============================================
-        EXTRACTION TITRE L'ÉQUIPE
-        ===============================================
-        À ADAPTER selon les classes CSS de L'Équipe
-        """
-        # 🔄 À ADAPTER: trouver les bons sélecteurs
+        """Extraction du titre - L'Équipe"""
         selectors = [
-            'h1.article-title',
             'h1.headline',
-            '.title h1',
-            'h1'
+            'h1[class*="title"]',
+            'h1',
+            'h2.headline'
         ]
         
         for selector in selectors:
@@ -114,7 +122,93 @@ class LequipeScraper(BaseScraper):
             if title_elem:
                 return title_elem.get_text().strip()
         
-        return super()._extract_title(soup)
+        return "No title"
+    
+    def _extract_content(self, soup):
+        """Extraction du contenu - L'Équipe"""
+        selectors = [
+            'article > p',
+            '[class*="article-content"] p',
+            '[class*="body"] p',
+            'p'
+        ]
+        
+        paragraphs = []
+        for selector in selectors:
+            elems = soup.select(selector)
+            if elems:
+                for elem in elems[:5]:  # Max 5 paragraphes
+                    text = elem.get_text().strip()
+                    if len(text) > 50:
+                        paragraphs.append(text)
+                break
+        
+        return " ".join(paragraphs) or "No content"
+    
+    def extract_article_data(self, url: str) -> Optional[Dict]:
+        """Extraction complète des données d'article"""
+        print(f"    📥 Extraction: {url}")
+        
+        try:
+            response = self.session.get(url, timeout=10)
+            response.raise_for_status()
+            
+            from bs4 import BeautifulSoup
+            soup = BeautifulSoup(response.content, 'html.parser')
+            
+            title = self._extract_title(soup)
+            if not title or title == "No title":
+                print(f"    ⚠️  Pas de titre trouvé")
+                return None
+            
+            content = self._extract_content(soup)
+            
+            # Classification par URL
+            category = "other"
+            url_lower = url.lower()
+            if any(x in url_lower for x in ['/football', '/foot']):
+                category = "football"
+            elif any(x in url_lower for x in ['/tennis', '/roland']):
+                category = "tennis"
+            elif any(x in url_lower for x in ['/basket', '/nba']):
+                category = "basketball"
+            
+            article = {
+                "title": title,
+                "content": content,
+                "url": url,
+                "source": "LEquipe",
+                "category": category,
+                "published_at": datetime.utcnow().isoformat(),
+                "scraped_at": datetime.utcnow().isoformat(),
+            }
+            
+            print(f"    ✅ Article extrait: {category}")
+            return article
+            
+        except Exception as e:
+            print(f"    ❌ Erreur extraction: {e}")
+            return None
+
+def run() -> int:
+    """
+    ===============================================
+    FONCTION RUN POUR BATCH PIPELINE
+    ===============================================
+    Fonction appelée par batch_pipeline.py
+    
+    Retourne:
+    - int: nombre d'articles collectés
+    """
+    scraper = LequipeScraper()
+    articles = scraper.scrape_articles(max_articles=50)
+    
+    if articles:
+        scraper.save_to_json(articles)
+        return len(articles)
+    
+    return 0
+
 
 def main():
     """

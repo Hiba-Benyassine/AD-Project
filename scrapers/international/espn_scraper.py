@@ -190,6 +190,26 @@ class ESPNScraper(BaseScraper):
             return []
 
 
+def run() -> int:
+    """
+    ===============================================
+    FONCTION RUN POUR BATCH PIPELINE
+    ===============================================
+    Fonction appelée par batch_pipeline.py
+    
+    Retourne:
+    - int: nombre d'articles collectés
+    """
+    scraper = ESPNScraper()
+    articles = scraper.scrape_articles(max_articles=50)
+    
+    if articles:
+        scraper.save_to_json(articles)
+        return len(articles)
+    
+    return 0
+
+
 def main():
     print("🚀 LANCEMENT SCRAPER ESPN")
     print("🎯 Section sport ESPN")
