@@ -84,6 +84,7 @@ services:
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://sports_user:sports_pass@postgres:5432/sports_warehouse
       AIRFLOW__CORE__LOAD_EXAMPLES: "False"
       AIRFLOW_UID: "50000"
+      AIRFLOW__WEBSERVER__SECRET_KEY: "temporary-secret-key-change-in-production"
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./airflow/logs:/opt/airflow/logs
