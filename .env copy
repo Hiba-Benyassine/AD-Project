@@ -1,4 +1,0 @@
-$env:MINIO_ENDPOINT="localhost:9000"
-$env:MINIO_ACCESS_KEY="minioadmin"
-$env:MINIO_SECRET_KEY="minioadmin"
-$env:MINIO_BUCKET="bronze"
