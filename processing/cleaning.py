@@ -43,7 +43,25 @@ except Exception:  # pragma: no cover - fallback for environments without langde
 BRONZE_DIR = Path("data/bronze")
 SILVER_DIR = Path("data/silver")
 SILVER_FILE = SILVER_DIR / "articles_clean.json"
+QUALITY_REPORT_FILE = SILVER_DIR / "data_quality_report.json"
 MIN_CONTENT_LENGTH = 100
+
+quality_metrics = {
+    "total_processed": 0,
+    "total_accepted": 0,
+    "total_rejected": 0,
+    "reasons": {
+        "missing_title": 0,
+        "missing_url": 0,
+        "content_too_short": 0,
+        "invalid_date": 0
+    },
+    "dimensions": {
+        "completude": 0.0,
+        "coherence": 0.0,
+        "validite": 0.0
+    }
+}
 
 
 def strip_html(text: str) -> str:
@@ -112,7 +130,22 @@ def quality_pass(row: Dict[str, str]) -> bool:
     url = (row.get("url") or "").strip()
 
     has_valid_date = is_valid_date(published_at) or is_valid_date(scraped_at)
-    return bool(title) and bool(url) and len(content) >= MIN_CONTENT_LENGTH and has_valid_date
+    
+    passed = True
+    if not title:
+        quality_metrics["reasons"]["missing_title"] += 1
+        passed = False
+    if not url:
+        quality_metrics["reasons"]["missing_url"] += 1
+        passed = False
+    if len(content) < MIN_CONTENT_LENGTH:
+        quality_metrics["reasons"]["content_too_short"] += 1
+        passed = False
+    if not has_valid_date:
+        quality_metrics["reasons"]["invalid_date"] += 1
+        passed = False
+        
+    return passed
 
 
 def iter_bronze_rows() -> Generator[Dict[str, str], None, None]:
@@ -168,12 +201,15 @@ def clean_rows(rows: Generator[Dict[str, str], None, None]) -> List[Dict[str, st
     seen: set[str] = set()
 
     for row in rows:
+        quality_metrics["total_processed"] += 1
+        
         raw_title = coalesce(row.get("title"), row.get("headline"))
         raw_content = coalesce(row.get("content"), row.get("body"), row.get("description"))
         raw_url = coalesce(row.get("url"), row.get("link"))
 
         if not raw_title or not raw_content or not raw_url:
-            continue
+            # We don't skip immediately so quality_pass can log the exact reason
+            pass
 
         row["title"] = normalize_text(raw_title)
         row["content"] = normalize_text(raw_content)
@@ -190,7 +226,17 @@ def clean_rows(rows: Generator[Dict[str, str], None, None]) -> List[Dict[str, st
         seen.add(dedupe_key)
 
         if quality_pass(row):
+            quality_metrics["total_accepted"] += 1
             cleaned.append(row)
+        else:
+            quality_metrics["total_rejected"] += 1
+
+    # Calcul des dimensions
+    if quality_metrics["total_processed"] > 0:
+        total = quality_metrics["total_processed"]
+        quality_metrics["dimensions"]["completude"] = 100 - ((quality_metrics["reasons"]["missing_title"] + quality_metrics["reasons"]["missing_url"]) / (total * 2)) * 100
+        quality_metrics["dimensions"]["coherence"] = 100 - (quality_metrics["reasons"]["content_too_short"] / total) * 100
+        quality_metrics["dimensions"]["validite"] = 100 - (quality_metrics["reasons"]["invalid_date"] / total) * 100
 
     return cleaned
 
@@ -200,6 +246,10 @@ def save_silver(rows: List[Dict[str, str]]) -> None:
     with SILVER_FILE.open("w", encoding="utf-8") as f:
         for row in rows:
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
+            
+    # Sauvegarde du rapport de qualité
+    with QUALITY_REPORT_FILE.open("w", encoding="utf-8") as f:
+        json.dump(quality_metrics, f, indent=4, ensure_ascii=False)
 
 
 def main() -> None:
