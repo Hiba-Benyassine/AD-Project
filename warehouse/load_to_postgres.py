@@ -28,7 +28,7 @@ GOLD_STATS = Path("data/gold/articles_stats.json")
 def get_connection():
     """Create PostgreSQL connection from env vars or defaults."""
     return psycopg2.connect(
-        host=os.getenv("PGHOST", "localhost"),
+        host=os.getenv("PGHOST", "postgres"),
         port=int(os.getenv("PGPORT", "5432")),
         dbname=os.getenv("PGDATABASE", "sports_warehouse"),
         user=os.getenv("PGUSER", "sports_user"),

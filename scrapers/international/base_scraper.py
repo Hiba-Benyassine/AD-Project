@@ -318,9 +318,11 @@ class BaseScraper(ABC):
     
     def save_to_json(self, articles: List[Dict], filename: str = None) -> str:
         """Sauvegarde avec timestamp et statistiques"""
+        import os
+        os.makedirs("data/bronze", exist_ok=True)
         if not filename:
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-            filename = f"{self.site_name.lower()}_articles_{timestamp}.json"
+            filename = f"data/bronze/{self.site_name.lower()}_articles_{timestamp}.json"
         
         # Ajouter statistiques
         stats = {

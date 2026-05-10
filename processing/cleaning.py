@@ -164,9 +164,20 @@ def iter_bronze_rows() -> Generator[Dict[str, str], None, None]:
                         for row in parsed:
                             if isinstance(row, dict):
                                 yield row
+                    continue
+                except json.JSONDecodeError:
+                    pass
+            elif content.startswith("{"):
+                try:
+                    parsed = json.loads(content)
+                    if isinstance(parsed, dict) and "articles" in parsed:
+                        for row in parsed["articles"]:
+                            if isinstance(row, dict):
+                                yield row
+                        continue
                     elif isinstance(parsed, dict):
                         yield parsed
-                    continue
+                        continue
                 except json.JSONDecodeError:
                     pass
 

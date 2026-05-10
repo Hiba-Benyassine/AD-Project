@@ -1,0 +1,515 @@
+{
+  "metadata": {
+    "total_articles": 50,
+    "scraped_at": "2026-05-09T20:28:22.343376",
+    "source": "ESPN",
+    "classification_method": "URL parsing (100% accuracy)",
+    "sports_distribution": {
+      "football": 19,
+      "tennis": 24,
+      "basketball": 7
+    }
+  },
+  "articles": [
+    {
+      "title": "VAR review: Did Man United deserve to be up a man ...",
+      "date": "2026-05-09T15:12:45-05:00",
+      "content": "Man United settled for a scoreless draw at Sunderland, but Bruno Fernandes was adamant the hosts should've gone down to 10 men. Was he right?",
+      "author": "Andy Davies",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48722840/var-review-did-manchester-united-deserve-a-man-premier-league-draw-sunderland",
+      "scraped_at": "2026-05-09T20:28:21.747126"
+    },
+    {
+      "title": "EPL recap: Man City keep title hopes alive",
+      "date": "2026-05-09T16:19:53-05:00",
+      "content": "Man City kept the pressure on Premier League leaders Arsenal by beating Brentford 3-0. Relive all the action with ESPN.",
+      "author": "ESPN",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48704622/premier-league-live-updates-liverpool-chelsea-sunderland-manchester-united-manchester-city-brentford",
+      "scraped_at": "2026-05-09T20:28:21.747251"
+    },
+    {
+      "title": "Arbeloa: I won't burn Madrid players at the stake",
+      "date": "2026-05-09T15:36:59-05:00",
+      "content": "Real Madrid coach Álvaro Arbeloa has made an emotional defence of Federico Valverde and Aurélien Tchouaméni after their training ground bust-up, hitting out at \"lies\" about his squad's professionalism and calling dressing room leaks \"a betrayal.\"",
+      "author": "Alex Kirkland",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48719651/real-madrid-alvaro-arbeloa-federico-valverde-aurelien-tchouameni-laliga",
+      "scraped_at": "2026-05-09T20:28:21.747537"
+    },
+    {
+      "title": "Messi stars as Miami cruise to 4-goal Toronto win",
+      "date": "2026-05-09T15:36:58-05:00",
+      "content": "Inter Miami bounced back from a shock defeat to Orlando by putting four past Toronto on Saturday, with Lionel Messi masterminding the MLS win.",
+      "author": "ESPN News Services",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48723363/lionel-messi-luis-suarez-stars-inter-miami-bounce-back-4-goal-toronto-win",
+      "scraped_at": "2026-05-09T20:28:21.747588"
+    },
+    {
+      "title": "Slot on Liverpool boos: I can win back fans",
+      "date": "2026-05-09T15:36:58-05:00",
+      "content": "Arne Slot has backed himself to win back the Liverpool fanbase after supporters booed the Dutchman and his team during Saturday's 1-1 draw with Chelsea.",
+      "author": "Beth Lindop",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48721300/arne-slot-liverpool-boos-chelsea-draw-win-back-fans",
+      "scraped_at": "2026-05-09T20:28:21.747631"
+    },
+    {
+      "title": "Flick praises 'special atmosphere' at Barcelona",
+      "date": "2026-05-09T15:36:58-05:00",
+      "content": "Barcelona coach Hansi Flick celebrated the \"special atmosphere\" at the club going into Sunday's Clásico against a Real Madrid side whose preparation for the game has been overshadowed by in-fighting.",
+      "author": "Samuel Marsden",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48720318/barcelona-real-madrid-hansi-flick-el-clasico",
+      "scraped_at": "2026-05-09T20:28:21.747703"
+    },
+    {
+      "title": "Vinicius and Mbappé at Barça? Bartomeu on talks",
+      "date": "2026-05-09T15:36:58-05:00",
+      "content": "Former Barcelona president Josep Maria Bartomeu has said that the club had an \"agreement in principle\" to sign Vinícius Júnior he signed for rivals Real Madrid.",
+      "author": "ESPN",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48721138/vinicius-junior-kylian-mbappe-barcelona-josep-bartomeu-talks",
+      "scraped_at": "2026-05-09T20:28:21.747750"
+    },
+    {
+      "title": "Katy Perry to headline U.S. World Cup opener",
+      "date": "2026-05-09T15:36:58-05:00",
+      "content": "Katy Perry will headline the U.S. opening ceremony for the 2026 World Cup, with FIFA announcing Friday that local stars will also lead kickoff celebrations in Mexico and Canada.",
+      "author": "Associated Press",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48716793/katy-perry-headline-us-world-cup-opening-ceremony",
+      "scraped_at": "2026-05-09T20:28:21.747807"
+    },
+    {
+      "title": "🤕Injury tracker: Who will miss 2026 World Cup?",
+      "date": "2026-05-09T15:36:58-05:00",
+      "content": "Which key players might not be participating in this summer's tournament? Here's the latest on key injuries impacting World Cup teams.",
+      "author": "Sam Tighe",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48572979/2026-fifa-world-cup-injuries-tracker-which-stars-miss-latest-info",
+      "scraped_at": "2026-05-09T20:28:21.747848"
+    },
+    {
+      "title": "Anfield losing patience with Liverpool's Slot, whi...",
+      "date": "2026-05-09T11:11:33-05:00",
+      "content": "Liverpool were booed off by their own fans at Anfield as they drew 1-1 to Chelsea, who snapped their six-game losing streak.",
+      "author": "Mark Ogden and Beth Lindop",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48720758/anfield-losing-patience-liverpool-slot-chelsea-snap-streak",
+      "scraped_at": "2026-05-09T20:28:21.747887"
+    },
+    {
+      "title": "Copy of How Barcelona can make Clásico history and cap off...",
+      "date": "2026-05-09T06:38:52-05:00",
+      "content": "After a week of infighting at Real Madrid, Barcelona can strike a new blow on their bitter rivals by winning the title against them for the first time.",
+      "author": "Alex Kirkland",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48701641/barcelona-clasico-history-la-liga-title-real-madrid-nightmare-week-tchouameni-valverde",
+      "scraped_at": "2026-05-09T20:28:21.747926"
+    },
+    {
+      "title": "Copy of Get ready for El Clásico! Barça vs. Madrid title r...",
+      "date": "2026-05-09T06:38:52-05:00",
+      "content": "All eyes will be on Barcelona on Sunday as Real Madrid try to stop their bitter rivals being crowned champions.",
+      "author": "Sam Marsden and Alex Kirkland",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48683678/barcelona-real-madrid-clasico-preview-title-race-all-head-head-key-clashes-predictions-odds",
+      "scraped_at": "2026-05-09T20:28:21.747963"
+    },
+    {
+      "title": "Teenager Lamine Yamal is among the world's best, and Barcelona face a dilemma because of it",
+      "date": "2026-05-09T01:36:55-05:00",
+      "content": "Lamine Yamal is the best teenager ever, and it makes him more susceptible to injury than the likes of Messi or Neymar ever were.",
+      "author": "Ryan O'Hanlon",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48705257/lamine-yamal-best-player-spain-barcelona-face-conundrum-it",
+      "scraped_at": "2026-05-09T20:28:21.747999"
+    },
+    {
+      "title": "Transfer rumors, news: Could free-agent Darwin Núñ...",
+      "date": "2026-05-09T06:34:55-05:00",
+      "content": "Could free agent Darwin Núñez return to the Premier League? Plus, Bayern are not in talks with Arsenal's Kai Havertz. Transfer Talk has the latest.",
+      "author": "ESPN",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48719479/transfer-rumors-news-chelsea-newcastle-monitor-former-liverpool-free-agent-darwin-nunez",
+      "scraped_at": "2026-05-09T20:28:21.748039"
+    },
+    {
+      "title": "Ranking the 25 best NWSL players of 2026 (so far)",
+      "date": "2026-05-08T20:48:41-05:00",
+      "content": "We're well into the NWSL season, so let's rank the best 25 players so far!",
+      "author": "Jeff Kassouf",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48704317/nwsl-top-25-best-players-2026-ranked",
+      "scraped_at": "2026-05-09T20:28:21.748074"
+    },
+    {
+      "title": "Fans question whether World Cup is worth the hassle",
+      "date": "2026-05-08T07:28:29-05:00",
+      "content": "Ticket prices, transit fees and exorbitant hotel rates combine to dampen stadium-goers' exuberance",
+      "author": "Anthony Olivieri",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/worldcup/story/_/id/48686530/world-cup-hassles-expenses",
+      "scraped_at": "2026-05-09T20:28:21.748107"
+    },
+    {
+      "title": "Champions League final: Predictions, odds, how the...",
+      "date": "2026-05-08T21:02:49-05:00",
+      "content": "And then there were two, as Arsenal will face PSG in the UEFA Champions League final. Let's look at how they got here, and which one will win it all on May 30.",
+      "author": "Bill Connelly",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48702097/champions-league-final-psg-arsenal-predictions-odds-analysis-more",
+      "scraped_at": "2026-05-09T20:28:21.748169"
+    },
+    {
+      "title": "The ones that got away: Players who big club acade...",
+      "date": "2026-05-07T17:56:02-05:00",
+      "content": "There are a host of players out there who had a very different early career to where they ended up. You'd be surprised who started at Chelsea, for example.",
+      "author": "Sam Tighe",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48693301/declan-rice-rodri-michael-olise-players-big-club-academies-let-go-too-soon",
+      "scraped_at": "2026-05-09T20:28:21.748209"
+    },
+    {
+      "title": "Revisiting ESPN's best men's U21 lists: Who starre...",
+      "date": "2026-05-07T17:56:01-05:00",
+      "content": "For eight years, our resident scout has ranked soccer's top prospects. With hindsight, does he regret any choices?",
+      "author": "Tor-Kristian Karlsen",
+      "category": "football",
+      "source": "ESPN",
+      "url": "https://www.espn.com/soccer/story/_/id/48682887/revisiting-espn-39-u21-men-lists-flopped-been-higher",
+      "scraped_at": "2026-05-09T20:28:21.748245"
+    },
+    {
+      "title": "Sabalenka stunned by Cirstea at Italian Open",
+      "date": "2026-05-09T14:42:53-05:00",
+      "content": "Top-ranked Aryna Sabalenka suffered a shock third-round loss to Sorana Cirstea at the Italian Open on Saturday.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48722343/sabalenka-suffers-surprise-defeat-cirstea-italian-open",
+      "scraped_at": "2026-05-09T20:28:22.037911"
+    },
+    {
+      "title": "Djokovic, after loss, unsure on French readiness",
+      "date": "2026-05-08T15:24:19-05:00",
+      "content": "Novak Djokovic was beaten by a Croatian qualifier 18 years younger than him at the Italian Open in his first match after two months out due to a right shoulder injury.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48713912/novak-djokovic-loses-qualifier-first-match-march",
+      "scraped_at": "2026-05-09T20:28:22.037985"
+    },
+    {
+      "title": "Swiatek's coach tears Achilles tendon in practice",
+      "date": "2026-05-08T10:49:32-05:00",
+      "content": "It was supposed to be a fun game between Iga Swiatek and her new coach on a special court in downtown Rome to help promote the Italian Open. It ended with a torn Achilles tendon for Francisco Roig, who was recently hired by Swiatek.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48712108/iga-swiatek-coach-tears-achilles-tendon-practice",
+      "scraped_at": "2026-05-09T20:28:22.038035"
+    },
+    {
+      "title": "ITF: Players from Belarus, Russia to stay neutrals",
+      "date": "2026-05-08T09:02:54-05:00",
+      "content": "Top-ranked Aryna Sabalenka and former men's No. 1 Daniil Medvedev will continue to play under neutral status after the ITF announced Friday that it will \"not change its existing position\" over suspensions for Belarus and Russia.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48711188/tennis-players-belarus-russia-keep-playing-neutrals",
+      "scraped_at": "2026-05-09T20:28:22.038079"
+    },
+    {
+      "title": "Eala gets back at Wang with Italian Open R64 win",
+      "date": "2026-05-08T07:04:46-05:00",
+      "content": "Awaiting Eala in the next round will be either world number two Elena Rybakina or Greece's Maria Sakkari.",
+      "author": "Miguel Alfonso Caramoan",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48710854/alex-eala-gets-back-wang-xinyu-italian-open-round-64-victory",
+      "scraped_at": "2026-05-09T20:28:22.038115"
+    },
+    {
+      "title": "Sinner adds voice to French Open prize protests",
+      "date": "2026-05-07T11:27:27-05:00",
+      "content": "The top tennis players are already upset they are not receiving a bigger share of tournament revenues at the French Open. Now they're hoping Wimbledon and the US Open respond to their demands, according to Jannik Sinner.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48702838/jannik-sinner-adds-voice-french-open-prize-money-protests",
+      "scraped_at": "2026-05-09T20:28:22.038157"
+    },
+    {
+      "title": "Italian Open exec backs players on Slam payouts",
+      "date": "2026-05-07T12:45:31-05:00",
+      "content": "Italian Open organizers are supporting tennis players who are urging a boycott unless the Grand Slam tournaments improve their prize money.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48701564/italian-open-amid-slam-push-sides-players-prize-money",
+      "scraped_at": "2026-05-09T20:28:22.038195"
+    },
+    {
+      "title": "Eala rallies past Fręch in gritty Italian Open opener",
+      "date": "2026-05-06T07:54:50-05:00",
+      "content": "Alex Eala fought back in the deciding set to claim a first round win over Magdalena Fręch at the Italian Open.",
+      "author": "Miguel Alfonso Caramoan",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48692367/alex-eala-rallies-magdalena-frech-gritty-italian-open-opener",
+      "scraped_at": "2026-05-09T20:28:22.038236"
+    },
+    {
+      "title": "Kostyuk, off back-to-back titles, missing Rome",
+      "date": "2026-05-06T06:42:22-05:00",
+      "content": "Fresh off the biggest title of her career, Marta Kostyuk has withdrawn from the Italian Open due to hip and ankle issues.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48691787/marta-kostyuk-withdraws-italian-open-hip-ankle-issues",
+      "scraped_at": "2026-05-09T20:28:22.038374"
+    },
+    {
+      "title": "Sabalenka: Boycott likely to 'fight for our rights'",
+      "date": "2026-05-05T12:59:02-05:00",
+      "content": "Aryna Sabalenka said Tuesday that a boycott might be needed for players to get a bigger share of Slam revenues, and players such as Coco Gauff and Elena Rybakina agreed.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48684165/boycott-needed-prize-share-issue",
+      "scraped_at": "2026-05-09T20:28:22.038468"
+    },
+    {
+      "title": "Venus Williams, Alysa Liu top athlete looks and moments at Met Gala 2026",
+      "date": "2026-05-04T23:41:14-05:00",
+      "content": "Stars from the sports world were out in New York for the 2026 Met Gala.",
+      "author": "ESPN",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/espn/story/_/id/48675094/met-gala-2026-athlete-looks-moments",
+      "scraped_at": "2026-05-09T20:28:22.038532"
+    },
+    {
+      "title": "Venus Williams, A'ja Wilson and more: Meet the athletes helping shape the 2026 Met Gala",
+      "date": "2026-05-04T09:02:49-05:00",
+      "content": "Venus Williams, A'ja Wilson, Misty Copeland and Aimee Mullins reflect a strong athlete presence at the 2026 Met Gala.",
+      "author": "Charlotte Gibson",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/wnba/story/_/id/48652521/met-gala-2026-athletes-committee-headline-venus-williams-aja-wilson",
+      "scraped_at": "2026-05-09T20:28:22.038593"
+    },
+    {
+      "title": "Top tennis stars slam French Open prize share",
+      "date": "2026-05-04T07:27:14-05:00",
+      "content": "Tennis stars, including Jannik Sinner, Coco Gauff and Aryna Sabalenka say their share in French Open tournament revenue has declined and that Grand Slam officials have not addressed issues like health and pensions.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48673703/top-tennis-stars-unhappy-share-french-open-revenue",
+      "scraped_at": "2026-05-09T20:28:22.038694"
+    },
+    {
+      "title": "Sinner sets Masters 1000 mark with Madrid title",
+      "date": "2026-05-03T16:38:12-05:00",
+      "content": "Jannik Sinner cruised past Alexander Zverev in the final of the Madrid Open to win the tournament for the first time and become the first man to win five consecutive Masters 1000 events.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48666027/sinner-wins-madrid-open-record-5th-straight-masters-1000-title",
+      "scraped_at": "2026-05-09T20:28:22.038772"
+    },
+    {
+      "title": "Ukraine's Kostyuk tops Russian Andreeva for title",
+      "date": "2026-05-02T13:52:31-05:00",
+      "content": "Marta Kostyuk of Ukraine beat Mirra Andreeva of Russia 7-5, 6-3 to win the Madrid Open title Saturday.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48657268/ukraine-kostyuk-tops-russian-andreeva-madrid-open-title",
+      "scraped_at": "2026-05-09T20:28:22.038817"
+    },
+    {
+      "title": "Mint juleps at the Kentucky Derby leads list of notable sport-refreshment combos",
+      "date": "2026-05-02T11:04:12-05:00",
+      "content": "The bourbon-based cocktail is a Churchill Downs staple, but the Kentucky Derby isn't the only event associated with a signature food or beverage item.",
+      "author": "ESPN Staff",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/46064085/signature-sport-food-drink-us-open-honey-deuce-derby-mint-julep-masters-pimento-cheese",
+      "scraped_at": "2026-05-09T20:28:22.038856"
+    },
+    {
+      "title": "Sinner gets 350th win, on to Madrid Open final",
+      "date": "2026-05-01T16:49:59-05:00",
+      "content": "Jannik Sinner is on to the Madrid Open final after defeating Arthur Fils 6-2, 6-4 for the top-ranked Sinner's 350th career win. Sinner will face Alexander Zverev.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48647911/sinner-tops-fils-350th-career-win-madrid-open-final",
+      "scraped_at": "2026-05-09T20:28:22.038907"
+    },
+    {
+      "title": "Nishikori says he plans to retire at end of season",
+      "date": "2026-04-30T19:52:14-05:00",
+      "content": "Kei Nishikori, who was the first Japanese player to advance to the final of a Grand Slam men's singles tournament, said this year will be his last.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48641890/former-no-4-kei-nishikori-plans-retire-end-season",
+      "scraped_at": "2026-05-09T20:28:22.038966"
+    },
+    {
+      "title": "Sinner praises 19-year-old Jódar: 'Incredible'",
+      "date": "2026-04-29T19:52:25-05:00",
+      "content": "Jannik Sinner proved too much for Rafael Jódar but was impressed by the latest tennis sensation from Spain in their Madrid Open quarterfinal match.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48631958/sinner-praises-jodar-halting-19-year-old-madrid-run",
+      "scraped_at": "2026-05-09T20:28:22.039029"
+    },
+    {
+      "title": "Potapova 1st 'lucky loser' into WTA 1000 semifinal",
+      "date": "2026-04-29T20:11:50-05:00",
+      "content": "Austria's Anastasia Potapova, ranked 56th, became the first \"lucky loser\" to reach a WTA 1000 semifinal by defeating Karolina Pliskova 6-1, 6-7 (4), 6-3 on Wednesday at the Madrid Open.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48631930/lucky-loser-anastasia-potapova-beats-karolina-pliskova-reach-madrid-open-semifinals",
+      "scraped_at": "2026-05-09T20:28:22.039097"
+    },
+    {
+      "title": "Jack Draper out of French Open with knee injury",
+      "date": "2026-04-29T14:11:45-05:00",
+      "content": "Jack Draper has been ruled out of the French Open with a knee injury in another blow for the world No. 4's attempts to get back to fitness.",
+      "author": "PA",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48629038/jack-draper-world-number-4-french-open-knee-injury",
+      "scraped_at": "2026-05-09T20:28:22.039155"
+    },
+    {
+      "title": "Baptiste saves 6 match points to stun Sabalenka",
+      "date": "2026-04-28T18:48:57-05:00",
+      "content": "American Hailey Baptiste earned the biggest win of her career by saving six match points and beating world No. 1 Aryna Sabalenka at the Madrid Open on Tuesday.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48621529/american-hailey-baptiste-saves-6-match-points-stuns-aryna-sabalenka-madrid-open",
+      "scraped_at": "2026-05-09T20:28:22.039214"
+    },
+    {
+      "title": "Sinner critical of Madrid Open match scheduling",
+      "date": "2026-04-28T13:15:49-05:00",
+      "content": "World No. 1 Jannik Sinner is calling for better scheduling of matches at the Madrid Open, saying the night session \"messes up the whole day\" for players.",
+      "author": "Auteur inconnu",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48618080/sinner-calls-better-match-scheduling-madrid-open",
+      "scraped_at": "2026-05-09T20:28:22.039283"
+    },
+    {
+      "title": "Sinner extends unbeaten streak to 20 matches",
+      "date": "2026-04-28T10:46:33-05:00",
+      "content": "Cameron Norrie's run at the Madrid Open ended with a fourth-round loss against world No. 1 Jannik Sinner.",
+      "author": "PA",
+      "category": "tennis",
+      "source": "ESPN",
+      "url": "https://www.espn.com/tennis/story/_/id/48617856/jannik-sinner-extends-unbeaten-streak-20-matches-win-cameron-norrie",
+      "scraped_at": "2026-05-09T20:28:22.039389"
+    },
+    {
+      "title": "Spurs take 2-1 series lead behind Wemby's gem",
+      "date": "2026-05-09T15:01:04-05:00",
+      "content": "Victor Wembanyama had 39 points, 15 rebounds and more game-wrecking defense for the Spurs, who took a 2-1 series lead with a 115-108 victory over the Timberwolves.",
+      "author": "Michael C. Wright",
+      "category": "basketball",
+      "source": "ESPN",
+      "url": "https://www.espn.com/nba/story/_/id/48718221/victor-wembanyama-big-night-gives-spurs-series-lead-vs-wolves",
+      "scraped_at": "2026-05-09T20:28:22.340653"
+    },
+    {
+      "title": "Finch calls out Brothers' 'unprofessional behavior...",
+      "date": "2026-05-09T15:01:04-05:00",
+      "content": "Timberwolves coach Chris Finch called it \"completely unprofessional behavior\" for official Tony Brothers to confront him on two separate occasions during a fourth-quarter stoppage in Game 3.",
+      "author": "Anthony Slater",
+      "category": "basketball",
+      "source": "ESPN",
+      "url": "https://www.espn.com/nba/story/_/id/48718625/timberwolves-chris-finch-calls-tony-brothers-game-3-confrontation-completely-unprofessional-behavior",
+      "scraped_at": "2026-05-09T20:28:22.340710"
+    },
+    {
+      "title": "Brunson shuts door on 76ers as Knicks go up 3-0",
+      "date": "2026-05-09T15:01:05-05:00",
+      "content": "Behind 33 points from Jalen Brunson, including big buckets late, the Knicks held off the 76ers to take a 3-0 lead in the semifinal series.",
+      "author": "Vincent Goodwill",
+      "category": "basketball",
+      "source": "ESPN",
+      "url": "https://www.espn.com/nba/story/_/id/48717062/jalen-brunson-shuts-door-76ers-knicks-go-3-0",
+      "scraped_at": "2026-05-09T20:28:22.340749"
+    },
+    {
+      "title": "Embiid's return not enough as 76ers dig 0-3 hole",
+      "date": "2026-05-09T15:01:05-05:00",
+      "content": "The Philadelphia 76ers got back Joel Embiid on Friday night -- but it didn't prevent them from moving within one game of elimination in their Eastern Conference semifinal series against the New York Knicks.",
+      "author": "Tim Bontemps",
+      "category": "basketball",
+      "source": "ESPN",
+      "url": "https://www.espn.com/nba/story/_/id/48717906/joel-embiid-return-not-enough-sixers-pushed-brink-elimination",
+      "scraped_at": "2026-05-09T20:28:22.340790"
+    },
+    {
+      "title": "Mavs hire Blazers' Schmitz as GM under Ujiri",
+      "date": "2026-05-09T15:01:05-05:00",
+      "content": "The Mavericks are hiring former Blazers assistant GM Mike Schmitz to run the franchise's basketball operations under president Masai Ujiri.",
+      "author": "Auteur inconnu",
+      "category": "basketball",
+      "source": "ESPN",
+      "url": "https://www.espn.com/nba/story/_/id/48714408/mavericks-hire-blazers-mike-schmitz-gm-masai-ujiri",
+      "scraped_at": "2026-05-09T20:28:22.340827"
+    },
+    {
+      "title": "NBA hopeful Peterson: Creatine led to cramping",
+      "date": "2026-05-09T15:01:05-05:00",
+      "content": "Darryn Peterson said a new round of bloodwork and other tests after the season led his doctors to conclude that his use of high doses of creatine led to mysterious and sometimes debilitating cramping during his freshman season at Kansas.",
+      "author": "Ramona Shelburne",
+      "category": "basketball",
+      "source": "ESPN",
+      "url": "https://www.espn.com/nba/story/_/id/48710416/darryn-peterson-says-high-doses-creatine-led-cramping",
+      "scraped_at": "2026-05-09T20:28:22.340871"
+    },
+    {
+      "title": "Nuggets back Adelman; roster changes on table",
+      "date": "2026-05-09T15:01:05-05:00",
+      "content": "Nuggets governor Josh Kroenke backed first-year coach David Adelman after a disappointing first-round exit but said changes to the roster could be on the table.",
+      "author": "Auteur inconnu",
+      "category": "basketball",
+      "source": "ESPN",
+      "url": "https://www.espn.com/nba/story/_/id/48715563/josh-kroenke-backs-david-adelman-roster-changes-table",
+      "scraped_at": "2026-05-09T20:28:22.340908"
+    }
+  ]
+}

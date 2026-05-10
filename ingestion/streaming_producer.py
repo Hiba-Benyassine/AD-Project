@@ -2,12 +2,14 @@ import json
 import time
 from datetime import datetime
 import sys
+import os
 from pathlib import Path
 
 # Ajouter le chemin racine pour les imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from kafka import KafkaProducer
+import psycopg2
 
 # Import all scrapers
 from scrapers.national.sport360_scraper import Sport360Scraper
@@ -21,9 +23,9 @@ def main():
     producer = None
     for _ in range(10):
         try:
-            # Note: We use localhost:9092 because this producer will run on the host machine
+            # Note: We use kafka:29092 because this producer will run inside a docker network
             producer = KafkaProducer(
-                bootstrap_servers=["localhost:9092"],
+                bootstrap_servers=["kafka:29092"],
                 value_serializer=lambda v: json.dumps(v).encode("utf-8")
             )
             break
@@ -32,7 +34,7 @@ def main():
             time.sleep(5)
             
     if not producer:
-        print("Erreur: Impossible de se connecter à Kafka (localhost:9092).")
+        print("Erreur: Impossible de se connecter à Kafka (kafka:29092).")
         return
 
     # Instantiate all scrapers
@@ -43,8 +45,28 @@ def main():
         ESPNScraper()
     ]
     
-    # Keep track of seen URLs globally to avoid duplicate processing
+    # Connection to PostgreSQL to fetch already seen URLs
+    def get_pg_connection():
+        return psycopg2.connect(
+            host=os.getenv("PGHOST", "postgres"),
+            port=os.getenv("PGPORT", "5432"),
+            dbname=os.getenv("PGDATABASE", "sports_warehouse"),
+            user=os.getenv("PGUSER", "sports_user"),
+            password=os.getenv("PGPASSWORD", "sports_pass"),
+        )
+
+    # Initial fetch of seen URLs from the warehouse
     seen_urls = set()
+    try:
+        conn = get_pg_connection()
+        with conn.cursor() as cur:
+            cur.execute("SELECT url FROM articles_clean")
+            db_urls = cur.fetchall()
+            seen_urls = {u[0] for u in db_urls}
+        conn.close()
+        print(f"[streaming] Initialisation: {len(seen_urls)} URLs récupérées de la base de données.")
+    except Exception as e:
+        print(f"[streaming] Attention: Impossible de charger l'historique depuis la BDD: {e}")
     
     print("[streaming] Écoute en direct des sources: L'Équipe, Sport360, Le Matin, ESPN...")
     

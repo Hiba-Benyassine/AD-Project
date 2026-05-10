@@ -7,7 +7,7 @@ Ce projet implémente une plateforme Big Data de bout en bout capable d'ingérer
 
 ### 2.1. Ingestion (Batch & Streaming)
 - **Batch** : Des scrapers automatisés (Python + BeautifulSoup) s'exécutent toutes les heures pour collecter massivement les articles sur nos sources sportives.
-- **Streaming** : Nous avons implémenté **Apache Kafka** et **Zookeeper**. Chaque article publié est capturé en temps réel (via un Kafka Producer qui écoute le flux RSS en continu) et intercepté par un Kafka Consumer qui le sauvegarde instantanément.
+- **Streaming** : Nous avons implémenté **Apache Kafka** et **Zookeeper**. Cette partie est entièrement automatisée via un conteneur dédié (`kafka-producer`). Chaque article publié est capturé en temps réel (via une écoute continue des flux RSS). Un mécanisme de **dédoublonnement intelligent** est intégré : avant chaque envoi vers Kafka, le système vérifie l'existence de l'URL dans le Data Warehouse (PostgreSQL) pour éviter toute duplication inutile de données. Les messages sont ensuite interceptés par un Consumer Kafka qui les sauvegarde instantanément dans le Data Lake.
 
 ### 2.2. Data Lake
 Toutes les données brutes sont ingérées et stockées de manière persistante sur un Data Lake S3-compatible : **MinIO**. Les fichiers sont historisés dans le bucket `bronze`.
@@ -43,8 +43,8 @@ Toutes les anomalies détectées lors du traitement Silver sont quantifiées et 
    docker compose up -d
    ```
 2. Accéder à l'interface d'orchestration Airflow : `http://localhost:8080` (admin/admin).
-3. (Optionnel) Lancer le flux Streaming temps-réel :
+3. Le flux Streaming (Kafka) démarre automatiquement avec Docker. Pour suivre l'ingestion en direct :
    ```bash
-   python ingestion/streaming_producer.py
+   docker logs -f sports_kafka_producer
    ```
 4. Explorer les données et créer des Dashboards : `http://localhost:3000` (Metabase).

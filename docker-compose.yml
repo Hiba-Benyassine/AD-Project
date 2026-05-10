@@ -159,6 +159,15 @@ services:
       - kafka
       - minio
 
+  kafka-producer:
+    build: .
+    container_name: sports_kafka_producer
+    command: python ingestion/streaming_producer.py
+    volumes:
+      - ./:/app
+    depends_on:
+      - kafka
+
 volumes:
   postgres_data:
   minio_data:
