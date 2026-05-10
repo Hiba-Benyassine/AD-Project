@@ -61,7 +61,7 @@ class Sport360Scraper(BaseScraper):
         Retourne:
         - List[str]: URLs des articles
         """
-        print(f"🔍 Recherche articles sur {self.base_url}")
+        print(f"SEARCHING: Recherche articles sur {self.base_url}")
         
         try:
             response = self.session.get(self.base_url, timeout=10)
@@ -91,11 +91,11 @@ class Sport360Scraper(BaseScraper):
                     if full_url not in articles:
                         articles.append(full_url)
             
-            print(f"✅ {len(articles)} URLs trouvées")
+            print(f"SUCCESS: {len(articles)} URLs trouvees")
             return articles
             
         except Exception as e:
-            print(f"❌ Erreur récupération URLs: {e}")
+            print(f"ERROR: Erreur recuperation URLs: {e}")
             return []
     
     def _extract_title(self, soup):
@@ -128,11 +128,11 @@ class Sport360Scraper(BaseScraper):
         - List[str]: URLs des articles de ce sport
         """
         if sport not in self.sport_urls:
-            print(f"❌ Sport '{sport}' non configuré")
+            print(f"ERROR: Sport '{sport}' non configure")
             return []
         
         sport_url = self.sport_urls[sport]
-        print(f"🔍 Scraping section {sport}: {sport_url}")
+        print(f"SEARCHING: Scraping section {sport}: {sport_url}")
         
         try:
             response = self.session.get(sport_url, timeout=10)
@@ -159,11 +159,11 @@ class Sport360Scraper(BaseScraper):
                     if full_url not in articles:
                         articles.append(full_url)
             
-            print(f"✅ {len(articles)} articles trouvés pour {sport}")
+            print(f"SUCCESS: {len(articles)} articles trouves pour {sport}")
             return articles
             
         except Exception as e:
-            print(f"❌ Erreur section {sport}: {e}")
+            print(f"ERROR: Erreur section {sport}: {e}")
             return []
 
 def run() -> int:
@@ -193,8 +193,8 @@ def main():
     ===============================================
     Fonction de test pour valider le scraper spécialisé
     """
-    print("🚀 LANCEMENT SCRAPER 360SPORT SPÉCIALISÉ")
-    print("🎯 Hérite de BaseScraper + logique spécifique")
+    print("LAUNCHING: SCRAPER 360SPORT SPECIALISE")
+    print("INFO: Herite de BaseScraper + logique specifique")
     print("=" * 60)
     
     scraper = Sport360Scraper()
@@ -205,17 +205,17 @@ def main():
     if articles:
         filename = scraper.save_to_json(articles)
         
-        print(f"\n📋 EXEMPLE D'ARTICLE:")
+        print(f"\nINFO: EXEMPLE D'ARTICLE:")
         article = articles[0]
-        print(f"🏆 Sport: {article['category']}")
-        print(f"📰 Titre: {article['title'][:60]}...")
-        print(f"🔗 URL: {article['url']}")
+        print(f"INFO: Sport: {article['category']}")
+        print(f"INFO: Titre: {article['title'][:60]}...")
+        print(f"INFO: URL: {article['url']}")
         
-        print(f"\n🎉 SCRAPER 360SPORT FONCTIONNEL!")
-        print(f"📁 Fichier: {filename}")
+        print(f"\nSUCCESS: SCRAPER 360SPORT FONCTIONNEL!")
+        print(f"FILE: {filename}")
         
     else:
-        print("\n❌ ÉCHEC DU SCRAPER 360SPORT")
+        print("\nERROR: ECHEC DU SCRAPER 360SPORT")
 
 if __name__ == "__main__":
     main()

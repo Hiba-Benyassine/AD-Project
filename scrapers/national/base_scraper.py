@@ -58,7 +58,7 @@ class BaseScraper(ABC):
         self.session = requests.Session()
         self.session.headers.update(self.headers)
         
-        print(f"🚀 {site_name} Scraper initialisé")
+        print(f"INFO: {site_name} Scraper initialise")
     
     def classify_by_url(self, url: str) -> str:
         """
@@ -122,7 +122,7 @@ class BaseScraper(ABC):
         Retourne:
         - Dict: article complet ou None si erreur
         """
-        print(f"📖 Extraction: {url}")
+        print(f"READING: {url}")
         
         try:
             response = self.session.get(url, timeout=10)
@@ -151,14 +151,14 @@ class BaseScraper(ABC):
             }
             
             if self._validate_article_data(article_data):
-                print(f"✅ {category.upper()}: {title[:50]}...")
+                print(f"SUCCESS {category.upper()}: {title[:50]}...")
                 return article_data
             else:
-                print(f"⚠️ Données invalides")
+                print(f"WARNING: Donnees invalides")
                 return None
                 
         except Exception as e:
-            print(f"❌ Erreur extraction {url}: {e}")
+            print(f"ERROR: Erreur extraction {url}: {e}")
             return None
     
     def _extract_title(self, soup: BeautifulSoup) -> str:
@@ -347,7 +347,7 @@ class BaseScraper(ABC):
         with open(filename, 'w', encoding='utf-8') as f:
             json.dump(output_data, f, ensure_ascii=False, indent=2)
         
-        print(f"💾 {len(articles)} articles sauvegardés dans {filename}")
+        print(f"SAVE: {len(articles)} articles sauvegardes dans {filename}")
         return filename
     
     @abstractmethod
@@ -379,17 +379,17 @@ class BaseScraper(ABC):
         Retourne:
         - List[Dict]: liste des articles scrapés
         """
-        print(f"🎯 Scraping {self.site_name} - Max: {max_articles} articles")
+        print(f"TARGET: Scraping {self.site_name} - Max: {max_articles} articles")
         print("=" * 60)
         
         # Récupérer les URLs
         urls = self.get_article_urls(max_articles)
         
         if not urls:
-            print("❌ Aucune URL trouvée")
+            print("ERROR: Aucune URL trouvee")
             return []
         
-        print(f"📋 {len(urls)} URLs à traiter")
+        print(f"LIST: {len(urls)} URLs a traiter")
         
         # Extraire les données
         articles = []
@@ -397,7 +397,7 @@ class BaseScraper(ABC):
         failed = 0
         
         for i, url in enumerate(urls, 1):
-            print(f"\n📄 Article {i}/{len(urls)}")
+            print(f"\nITEM: Article {i}/{len(urls)}")
             
             article_data = self.extract_article_data(url)
             
@@ -413,11 +413,11 @@ class BaseScraper(ABC):
         
         # Résumé
         print("\n" + "=" * 60)
-        print(f"📊 RÉSUMÉ {self.site_name}")
-        print(f"✅ Réussis: {successful}")
-        print(f"❌ Échoués: {failed}")
+        print(f"SUMMARY: RESUME {self.site_name}")
+        print(f"OK: Reussis: {successful}")
+        print(f"FAIL: Echoues: {failed}")
         success_rate = successful/(successful+failed)*100 if (successful+failed) > 0 else 0
-        print(f"📈 Taux de succès: {success_rate:.1f}%")
+        print(f"STATS: Taux de succes: {success_rate:.1f}%")
         print("=" * 60)
         
         return articles

@@ -95,7 +95,7 @@ class ESPNScraper(BaseScraper):
 
     def get_article_urls(self, max_articles: int = 10) -> List[str]:
         """Retourne les URLs d'articles sport depuis les flux RSS ESPN."""
-        print("🔍 Recherche articles ESPN sport via RSS")
+        print(" Recherche articles ESPN sport via RSS")
         urls: List[str] = []
 
         try:
@@ -119,15 +119,15 @@ class ESPNScraper(BaseScraper):
                     if self._is_valid_sport_url(url) and url not in urls:
                         urls.append(url)
 
-            print(f"✅ {len(urls)} URLs trouvées")
+            print(f" {len(urls)} URLs trouves")
             return urls
         except Exception as e:
-            print(f"❌ Erreur récupération URLs ESPN: {e}")
+            print(f"ERROR: Erreur recuperation URLs ESPN: {e}")
             return []
 
     def scrape_articles(self, max_articles: int = 10) -> List[dict]:
         """Scraping ESPN en mode RSS natif (simple et fiable)."""
-        print(f"🎯 Scraping {self.site_name} (RSS) - Max: {max_articles} articles")
+        print(f"TARGET: Scraping {self.site_name} (RSS) - Max: {max_articles} articles")
         print("=" * 60)
 
         articles: List[dict] = []
@@ -176,17 +176,17 @@ class ESPNScraper(BaseScraper):
                     if self._validate_article_data(article_data):
                         articles.append(article_data)
 
-                print(f"✅ RSS {sport}: {len(articles)} articles cumulés")
+                print(f"SUCCESS RSS {sport}: {len(articles)} articles cumules")
 
             print("\n" + "=" * 60)
-            print(f"📊 RÉSUMÉ {self.site_name}")
-            print(f"✅ Réussis: {len(articles)}")
-            print("❌ Échoués: 0")
+            print(f"SUMMARY: RESUME {self.site_name}")
+            print(f"OK: Reussis: {len(articles)}")
+            print("FAIL: Echoues: 0")
             print("=" * 60)
             return articles
 
         except Exception as e:
-            print(f"❌ Erreur scraping RSS ESPN: {e}")
+            print(f" Erreur scraping RSS ESPN: {e}")
             return []
 
 
@@ -211,8 +211,8 @@ def run() -> int:
 
 
 def main():
-    print("🚀 LANCEMENT SCRAPER ESPN")
-    print("🎯 Section sport ESPN")
+    print(" LANCEMENT SCRAPER ESPN")
+    print(" Section sport ESPN")
     print("=" * 60)
 
     scraper = ESPNScraper()
@@ -220,10 +220,10 @@ def main():
 
     if articles:
         filename = scraper.save_to_json(articles)
-        print("\n🎉 SCRAPER ESPN FONCTIONNEL!")
-        print(f"📁 Fichier: {filename}")
+        print("\n SCRAPER ESPN FONCTIONNEL!")
+        print(f" Fichier: {filename}")
     else:
-        print("\n❌ ÉCHEC DU SCRAPER ESPN")
+        print("\n CHEC DU SCRAPER ESPN")
 
 
 if __name__ == "__main__":

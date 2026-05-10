@@ -69,7 +69,7 @@ class LeMatinScraper(BaseScraper):
         ===============================================
         À ADAPTER: inspecter le HTML de lematin.ma/sport
         """
-        print(f"🔍 Recherche articles sur {self.base_url}/sports")
+        print(f" Recherche articles sur {self.base_url}/sports")
         
         try:
             from bs4 import BeautifulSoup
@@ -106,11 +106,11 @@ class LeMatinScraper(BaseScraper):
                     if self._is_valid_sport_article_url(full_url) and full_url not in articles:
                         articles.append(full_url)
             
-            print(f"✅ {len(articles)} URLs trouvées")
+            print(f"SUCCESS: {len(articles)} URLs trouvees")
             return articles
             
         except Exception as e:
-            print(f"❌ Erreur récupération URLs: {e}")
+            print(f"ERROR: Erreur recuperation URLs: {e}")
             return []
     
     def _extract_title(self, soup):
@@ -222,8 +222,8 @@ def main():
     ===============================================
     À adapter une fois la structure HTML analysée
     """
-    print("🚀 LANCEMENT SCRAPER LE MATIN")
-    print("🎯 Section sport Le Matin")
+    print("LAUNCHING: SCRAPER LE MATIN")
+    print("TARGET: Section sport Le Matin")
     print("=" * 60)
     
     scraper = LeMatinScraper()
@@ -232,11 +232,11 @@ def main():
     
     if articles:
         filename = scraper.save_to_json(articles)
-        print(f"\n🎉 SCRAPER LE MATIN FONCTIONNEL!")
-        print(f"📁 Fichier: {filename}")
+        print(f"\n SCRAPER LE MATIN FONCTIONNEL!")
+        print(f" Fichier: {filename}")
         
     else:
-        print("\n❌ ÉCHEC DU SCRAPER LE MATIN")
+        print("\n CHEC DU SCRAPER LE MATIN")
 
 if __name__ == "__main__":
     main()

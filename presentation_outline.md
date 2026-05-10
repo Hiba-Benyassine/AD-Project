@@ -32,21 +32,32 @@
 
 ## Slide 4 : Ingestion Hybride (Batch & Streaming)
 - **Batch (Airflow) :** Scraping automatisé planifié toutes les heures. Idéal pour récupérer l'historique massif.
-- **Streaming (Kafka) :** Scraping en temps réel des flux RSS. Chaque nouvel article publié sur le site de l'Équipe, ESPN, etc., génère un événement intercepté par un Consumer Kafka qui l'envoie dans le Data Lake.
+- **Streaming (Kafka) :** Ingestion à faible latence (quelques secondes).
+- **Dédoublonnement Intelligent :** Vérification systématique contre PostgreSQL avant envoi vers Kafka pour éviter les doublons.
+- **Ingestion Directe :** Le Consumer Kafka écrit directement dans PostgreSQL pour bypasser les délais d'Airflow.
 
 ---
 
 ## Slide 5 : L'Architecture Médaillon
 - **Couche Bronze :** Stockage immuable de l'historique brut dans MinIO (`.json`).
-- **Couche Silver :** Nettoyage des données (suppression HTML, détection de langue, validation des dates).
-- **Couche Gold :** Tables analytiques prêtes à l'emploi (agrégation par jour, par sport, par source).
+- **Couche Silver :** Nettoyage (suppression HTML, normalisation texte, détection de langue).
+- **Couche Gold (Enrichissement) :** Extraction automatique de **Mots-clés (Keywords)** pour l'analyse sémantique.
+- **Data Backfill :** Script de récupération historique des 4 derniers jours pour peupler le dashboard immédiatement.
 
 ---
 
-## Slide 6 : Qualité des Données et Gouvernance
-- Application de règles strictes lors du passage de Bronze à Silver.
-- **Tests mis en place :** Articles sans titre ? Date manquante ? Contenu trop court ?
-- **Monitoring :** Génération automatique d'un rapport de qualité (`data_quality_report.json`) mesurant la Complétude, la Validité et la Cohérence des données. 
+## Slide 6 : Analytique Temps Réel & Mots-clés
+- **Fonctionnalité :** Détection automatique des sujets brûlants.
+- **Keywords :** "mercato", "victoire", "transfert", "penalty", etc.
+- **Visualisation :** Top mots les plus fréquents par sport et par source.
+- **Rattrapage :** Script dédié pour enrichir les données anciennes rétroactivement.
+
+---
+
+## Slide 7 : Monitoring & Fiabilité
+- **Start Dashboard :** Scripts de démarrage automatisés (`start.sh` / `start.bat`).
+- **Health Checks :** Validation automatique de la connectivité (Postgres, Kafka, MinIO).
+- **Rapport Qualité :** Monitoring des taux de complétude et de rejet en temps réel.
 
 ---
 

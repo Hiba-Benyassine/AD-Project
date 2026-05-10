@@ -48,7 +48,7 @@ class LequipeScraper(BaseScraper):
         Récupère les URLs des articles.
         Tente le scraping des pages de rubriques car le RSS est instable.
         """
-        print(f"SCRAPING: L'Équipe via rubriques directes")
+        print(f"SCRAPING: L'quipe via rubriques directes")
         urls = []
         
         for section, section_url in self.sections.items():
@@ -79,7 +79,7 @@ class LequipeScraper(BaseScraper):
                 print(f"    ERREUR sur la section {section}: {e}")
                 continue
         
-        print(f"{len(urls)} URLs récupérées pour L'Équipe")
+        print(f"{len(urls)} URLs rcupres pour L'quipe")
         return urls[:max_articles]
 
     def _extract_title(self, soup):
@@ -159,7 +159,7 @@ class LequipeScraper(BaseScraper):
             }
             
         except Exception as e:
-            print(f"    ❌ Erreur extraction {url}: {e}")
+            print(f"     Erreur extraction {url}: {e}")
             return None
 
 def run() -> int:
@@ -184,9 +184,9 @@ def main():
     
     if articles:
         filename = scraper.save_to_json(articles)
-        print(f"\nSUCCESS: {len(articles)} articles collectés")
+        print(f"\nSUCCESS: {len(articles)} articles collects")
     else:
-        print("\nFAILURE: Aucun article collecté. Vérifiez la connexion ou les sélecteurs.")
+        print("\nFAILURE: Aucun article collect. Vrifiez la connexion ou les slecteurs.")
 
 if __name__ == "__main__":
     main()

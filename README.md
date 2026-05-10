@@ -25,7 +25,15 @@ To avoid inconsistent labels and data chaos, category values are restricted to:
 
 These values are enforced in the processing layer and in SQL constraints.
 
-## 3) Global Architecture
+## 3) Key Features
+
+- **Architecture Médaillon (Bronze/Silver/Gold)** : Traitement structuré et immuable des données.
+- **Real-time Keywords Extraction** : Extraction automatique de termes sportifs clés (match, but, mercato, etc.) dès l'ingestion.
+- **Hybrid Streaming Pipeline** : Ingestion Kafka avec dédoublonnement temps réel et injection directe en base.
+- **Monitoring Health Check** : Scripts de démarrage (`start.sh`/`start.bat`) avec validation automatique de la santé des services.
+- **Historical Backfill** : Utilitaire de récupération massive des données historiques pour peupler instantanément la plateforme.
+
+## 4) Global Architecture
 
 1. Scrapers collect articles from selected media websites.
 2. Ingestion stores raw JSON records in Bronze.
@@ -340,16 +348,19 @@ Create charts on top of warehouse tables:
 - Schema and constraints are documented in SQL.
 - Categories are closed and controlled.
 
-## 16) New Features (Streaming & Analytics)
+## 16) Advanced Features
 
 ### 16.1 Real-time Keyword Extraction
-Le système extrait désormais automatiquement des mots-clés sportifs (match, but, équipe, mercato, etc.) dès l'ingestion. Ces mots-clés sont stockés dans la colonne `keywords` de la table `articles_clean` pour permettre des analyses de tendances dans Metabase.
+Le système utilise désormais un extracteur de mots-clés (`processing/cleaning.py`) qui identifie les termes sportifs (match, but, mercato, etc.) dès l'ingestion Kafka. Ces données sont stockées dans la colonne `keywords` de PostgreSQL.
 
-### 16.2 Real-time Dashboarding
-Le `kafka-consumer` écrit désormais les articles en temps réel directement dans PostgreSQL. Cela permet d'avoir des tableaux de bord Metabase qui se mettent à jour instantanément sans attendre le passage du pipeline Airflow.
+### 16.2 Real-time Dashboarding (Low Latency)
+Pour offrir une expérience premium, le `kafka-consumer` contourne le délai d'une heure d'Airflow en écrivant les articles directement dans PostgreSQL. Les dashboards Metabase reflètent les nouvelles publications en quelques secondes.
 
-### 16.3 Monitoring au démarrage
-Le script `start.sh` fournit une confirmation visuelle du bon fonctionnement du flux de streaming, garantissant que le Producer et le Consumer sont bien connectés à Kafka.
+### 16.3 Monitoring & Health Dashboard
+Le script `start.sh` (ou `start.bat`) ne se contente pas de lancer Docker. Il vérifie activement la connectivité à PostgreSQL, Kafka et MinIO, et valide que le flux de streaming est "Live" avant de confirmer le démarrage.
+
+### 16.4 Historical Backfill Utility
+Un script dédié (`backfill_last_4_days.py`) permet de remonter dans le temps sur toutes les sources pour peupler instantanément la plateforme avec plusieurs centaines d'articles récents.
 
 ## 17) Future Enhancements
 

@@ -154,7 +154,7 @@ class BaseScraper(ABC):
                 print(f"SUCCESS {category.upper()}: {title[:50]}...")
                 return article_data
             else:
-                print(f"WARNING Données invalides")
+                print(f"WARNING Donnes invalides")
                 return None
                 
         except Exception as e:
@@ -347,7 +347,7 @@ class BaseScraper(ABC):
         with open(filename, 'w', encoding='utf-8') as f:
             json.dump(output_data, f, ensure_ascii=False, indent=2)
         
-        print(f"SAVE: {len(articles)} articles sauvegardés dans {filename}")
+        print(f"SAVE: {len(articles)} articles sauvegards dans {filename}")
         return filename
     
     @abstractmethod
@@ -386,10 +386,10 @@ class BaseScraper(ABC):
         urls = self.get_article_urls(max_articles)
         
         if not urls:
-            print("ERROR: Aucune URL trouvée")
+            print("ERROR: Aucune URL trouve")
             return []
         
-        print(f"LIST: {len(urls)} URLs à traiter")
+        print(f"LIST: {len(urls)} URLs  traiter")
         
         # Extraire les données
         articles = []
@@ -414,10 +414,10 @@ class BaseScraper(ABC):
         # Résumé
         print("\n" + "=" * 60)
         print(f"SUMMARY {self.site_name}")
-        print(f"OK: Réussis: {successful}")
-        print(f"FAIL: Échoués: {failed}")
+        print(f"OK: Russis: {successful}")
+        print(f"FAIL: chous: {failed}")
         success_rate = successful/(successful+failed)*100 if (successful+failed) > 0 else 0
-        print(f"STATS: Taux de succès: {success_rate:.1f}%")
+        print(f"STATS: Taux de succs: {success_rate:.1f}%")
         print("=" * 60)
         
         return articles

@@ -7,7 +7,7 @@ Ce projet implémente une plateforme Big Data de bout en bout capable d'ingérer
 
 ### 2.1. Ingestion (Batch & Streaming)
 - **Batch** : Des scrapers automatisés (Python + BeautifulSoup) s'exécutent toutes les heures pour collecter massivement les articles sur nos sources sportives.
-- **Streaming** : Nous avons implémenté **Apache Kafka** et **Zookeeper**. Cette partie est entièrement automatisée via un conteneur dédié (`kafka-producer`). Chaque article publié est capturé en temps réel (via une écoute continue des flux RSS). Un mécanisme de **dédoublonnement intelligent** est intégré : avant chaque envoi vers Kafka, le système vérifie l'existence de l'URL dans le Data Warehouse (PostgreSQL) pour éviter toute duplication inutile de données. Les messages sont ensuite interceptés par un Consumer Kafka qui les sauvegarde instantanément dans le Data Lake.
+- **Streaming (Temps Réel)** : Utilisation d'**Apache Kafka** pour une ingestion à faible latence. Le `kafka-producer` interroge les sources sportives en continu. Pour garantir l'intégrité, chaque article est dédoublonné en temps réel contre la base PostgreSQL avant d'être envoyé dans le topic `news_stream`. Le `kafka-consumer` intercepte ces messages, les stocke dans le Data Lake (MinIO) et les injecte **instantanément** dans le Data Warehouse (PostgreSQL) pour une visualisation immédiate dans Metabase.
 
 ### 2.2. Data Lake
 Toutes les données brutes sont ingérées et stockées de manière persistante sur un Data Lake S3-compatible : **MinIO**. Les fichiers sont historisés dans le bucket `bronze`.
@@ -25,8 +25,21 @@ L'ensemble des pipelines (Scraping -> Cleaning -> Classification -> Gold -> Load
 - **Data Warehouse** : PostgreSQL est utilisé pour stocker les tables analytiques (Articles par jour, Tendances, Sources).
 - **Visualisation** : Metabase est connecté au Data Warehouse pour exposer les tableaux de bord décisionnels.
 
-## 3. Qualité des Données et Gouvernance
+## 3. Fonctionnalités Avancées (Analytique & Monitoring)
 
+### 3.1. Extraction de Mots-clés en Temps Réel
+Pour répondre au besoin d'analyse des "Top sujets", nous avons intégré un module d'extraction de mots-clés (`extract_keywords`). Ce module analyse le contenu de chaque article pour identifier les termes sportifs prépondérants (ex: *mercato, but, victoire, penalty*). Ces mots-clés sont stockés dans une colonne dédiée, permettant des analyses de fréquence immédiates dans Metabase.
+
+### 3.2. Backfill Historique
+Afin de ne pas démarrer avec une plateforme vide, un script de **Backfill** (`backfill_last_4_days.py`) a été développé. Il permet de remonter sur les 4 derniers jours de publications pour toutes les sources, garantissant une richesse de données dès le premier jour.
+
+### 3.3. Dashboard de Santé et Monitoring
+Le déploiement est sécurisé par un script de monitoring (`start.sh` / `start.bat`) qui :
+1. Lance l'infrastructure Docker.
+2. Teste la disponibilité de PostgreSQL, Kafka et MinIO.
+3. Valide le bon fonctionnement du flux de streaming avant de confirmer l'état "Opérationnel" du système.
+
+## 4. Qualité des Données et Gouvernance
 Une étape critique de la couche "Silver" est la validation de la qualité des données. 
 Nous évaluons trois dimensions principales :
 - **Complétude** : Un article doit obligatoirement avoir un titre et une URL source.
@@ -34,7 +47,7 @@ Nous évaluons trois dimensions principales :
 - **Cohérence** : Le contenu de l'article doit être pertinent (minimum 100 caractères).
 
 **Traçabilité et Monitoring :**
-Toutes les anomalies détectées lors du traitement Silver sont quantifiées et enregistrées dans un rapport généré automatiquement : `data/silver/data_quality_report.json`. Ce fichier garantit la gouvernance et permet un audit transparent sur le volume d'articles rejetés et leurs raisons (titre manquant, contenu trop court, date invalide).
+Toutes les anomalies détectées lors du traitement Silver sont quantifiées et enregistrées dans un rapport généré automatiquement : `data/silver/data_quality_report.json`.
 
 ## 4. Guide de Démarrage Rapide (Automatisé)
 
