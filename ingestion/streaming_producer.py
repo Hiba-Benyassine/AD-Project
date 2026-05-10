@@ -16,6 +16,7 @@ from scrapers.national.sport360_scraper import Sport360Scraper
 from scrapers.national.lematin_scraper import LeMatinScraper
 from scrapers.international.lequipe_scraper import LequipeScraper
 from scrapers.international.espn_scraper import ESPNScraper
+from processing.cleaning import extract_keywords
 
 def main():
     print("[streaming] Démarrage du Kafka Producer (Scraping Multi-Sources en temps réel)...")
@@ -96,6 +97,9 @@ def main():
                             article = None
                         
                         if article:
+                            # Enrichissement temps réel (mots-clés)
+                            article["keywords"] = extract_keywords(article.get("content", ""))
+                            
                             # Envoyer à Kafka
                             producer.send("news_stream", article)
                             producer.flush()

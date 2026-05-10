@@ -82,6 +82,34 @@ def normalize_text(text: str) -> str:
     return text.strip()
 
 
+def extract_keywords(text: str) -> str:
+    """
+    Extrait les mots-clés sportifs importants du texte.
+    Option rapide demandée par l'utilisateur.
+    """
+    if not text:
+        return ""
+        
+    text_lower = text.lower()
+    
+    # Liste de mots-clés sportifs pertinents
+    sports_keywords = [
+        "match", "but", "equipe", "victoire", "defaite", "score", "joueur",
+        "entraineur", "transfert", "mercato", "championnat", "coupe", "ligue",
+        "ballon", "terrain", "stade", "supporter", "arbitre", "penalty",
+        "tennis", "set", "break", "service", "basket", "nba", "dunk", "prolongation"
+    ]
+    
+    found = []
+    for kw in sports_keywords:
+        # On cherche le mot avec des frontières (boundaries) pour éviter les faux positifs (ex: "but" dans "debut")
+        if re.search(r'\b' + kw + r'\b', text_lower):
+            found.append(kw)
+            
+    # Limiter à 5 mots-clés maximum
+    return ", ".join(found[:5])
+
+
 def coalesce(*values: str) -> str:
     """Return the first non-empty normalized string value."""
     for value in values:
@@ -230,6 +258,7 @@ def clean_rows(rows: Generator[Dict[str, str], None, None]) -> List[Dict[str, st
         row["source"] = coalesce(row.get("source"), "unknown")
         row["category"] = coalesce(row.get("category"), "other").lower()
         row["language"] = detect_language(row["content"])
+        row["keywords"] = extract_keywords(row["content"])
 
         dedupe_key = _deduplicate_key(row)
         if dedupe_key in seen:

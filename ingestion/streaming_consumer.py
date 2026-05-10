@@ -11,8 +11,56 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from kafka import KafkaConsumer
 import boto3
 from botocore.client import Config
+import psycopg2
+from dateutil import parser as date_parser
 
 BRONZE_DIR = Path("data/bronze")
+
+def get_pg_connection():
+    return psycopg2.connect(
+        host=os.getenv("PGHOST", "postgres"),
+        port=os.getenv("PGPORT", "5432"),
+        dbname=os.getenv("PGDATABASE", "sports_warehouse"),
+        user=os.getenv("PGUSER", "sports_user"),
+        password=os.getenv("PGPASSWORD", "sports_pass"),
+    )
+
+def to_timestamp(value: str) -> datetime:
+    try:
+        return date_parser.parse(value)
+    except Exception:
+        return datetime.utcnow()
+
+def save_to_postgres(article):
+    try:
+        conn = get_pg_connection()
+        query = """
+            INSERT INTO articles_clean
+            (source, url, title, content, published_at, scraped_at, language, category, keywords)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            ON CONFLICT (url) DO NOTHING;
+        """
+        with conn.cursor() as cur:
+            cur.execute(
+                query,
+                (
+                    article.get("source", "unknown"),
+                    article.get("url", ""),
+                    article.get("title", ""),
+                    article.get("content", ""),
+                    to_timestamp(article.get("published_at", "")),
+                    to_timestamp(article.get("scraped_at", "")),
+                    article.get("language", "unknown"),
+                    article.get("category", "other"),
+                    article.get("keywords", ""),
+                ),
+            )
+        conn.commit()
+        conn.close()
+        return True
+    except Exception as e:
+        print(f"[streaming] Erreur insertion Postgres: {e}")
+        return False
 
 def get_s3_client():
     endpoint = os.getenv("MINIO_ENDPOINT", "minio:9000")
@@ -77,6 +125,10 @@ def main():
             print(f"[streaming] Envoyé sur MinIO: {filename}")
         except Exception as e:
             print(f"[streaming] Erreur upload MinIO: {e}")
+            
+        # Real-time update to Postgres for Metabase
+        if save_to_postgres(article):
+            print(f"[streaming] ✅ Article inséré en temps réel dans PostgreSQL")
 
 if __name__ == "__main__":
     main()

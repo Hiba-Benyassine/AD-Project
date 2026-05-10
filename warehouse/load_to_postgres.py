@@ -65,8 +65,8 @@ def to_timestamp(value: str) -> datetime:
 def insert_articles(conn, rows: Iterable[Dict[str, str]]) -> int:
     query = """
         INSERT INTO articles_clean
-        (source, url, title, content, published_at, scraped_at, language, category)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+        (source, url, title, content, published_at, scraped_at, language, category, keywords)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
         ON CONFLICT (url) DO NOTHING;
     """
 
@@ -84,6 +84,7 @@ def insert_articles(conn, rows: Iterable[Dict[str, str]]) -> int:
                     to_timestamp(row.get("scraped_at", "")),
                     row.get("language", "unknown"),
                     row.get("category", "other"),
+                    row.get("keywords", ""),
                 ),
             )
             inserted += cur.rowcount

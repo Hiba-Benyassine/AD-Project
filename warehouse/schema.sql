@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS articles_clean (
     scraped_at TIMESTAMP NOT NULL,
     language TEXT,
     category TEXT NOT NULL,
+    keywords TEXT, -- Extraction de mots-clés (ex: "match, but, équipe")
     inserted_at TIMESTAMP NOT NULL DEFAULT NOW(),
 
     -- Data governance constraints.

@@ -181,11 +181,22 @@ See SQL in `warehouse/schema.sql`.
 - Docker + Docker Compose
 - Python 3.11+ (optional for running scripts outside containers)
 
-### 11.2 Start stack
+### 11.2 Start stack (Recommended)
 
+Utilisez les scripts de démarrage automatisés pour lancer l'infrastructure et vérifier que tous les processus (Base de données, Kafka, Streaming) sont opérationnels :
+
+**Sur Linux / Mac / Git Bash :**
 ```bash
-docker compose up -d
+chmod +x start.sh
+./start.sh
 ```
+
+**Sur Windows (PowerShell/CMD) :**
+```cmd
+.\start.bat
+```
+
+Ces scripts lancent `docker compose up -d` et affichent un tableau de bord de santé des services.
 
 ### 11.3 MinIO buckets
 
@@ -329,11 +340,19 @@ Create charts on top of warehouse tables:
 - Schema and constraints are documented in SQL.
 - Categories are closed and controlled.
 
-## 16) Future Enhancements
+## 16) New Features (Streaming & Analytics)
 
-## 14) Future Enhancements
+### 16.1 Real-time Keyword Extraction
+Le système extrait désormais automatiquement des mots-clés sportifs (match, but, équipe, mercato, etc.) dès l'ingestion. Ces mots-clés sont stockés dans la colonne `keywords` de la table `articles_clean` pour permettre des analyses de tendances dans Metabase.
+
+### 16.2 Real-time Dashboarding
+Le `kafka-consumer` écrit désormais les articles en temps réel directement dans PostgreSQL. Cela permet d'avoir des tableaux de bord Metabase qui se mettent à jour instantanément sans attendre le passage du pipeline Airflow.
+
+### 16.3 Monitoring au démarrage
+Le script `start.sh` fournit une confirmation visuelle du bon fonctionnement du flux de streaming, garantissant que le Producer et le Consumer sont bien connectés à Kafka.
+
+## 17) Future Enhancements
 
 - Add language detection library for better quality.
-- Add Kafka for near-real-time ingestion.
 - Add Spark for large-scale transformations.
 - Add Great Expectations for data quality monitoring.

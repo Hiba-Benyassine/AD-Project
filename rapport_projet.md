@@ -16,7 +16,7 @@ Toutes les données brutes sont ingérées et stockées de manière persistante 
 Le traitement des données suit strictement l'approche Médaillon :
 - **Bronze** : Données brutes (JSON/JSONL) stockées dans MinIO.
 - **Silver** : Données nettoyées (script `cleaning.py`). Suppression des balises HTML, normalisation Unicode du texte, détection de la langue d'origine, et application des règles de Qualité.
-- **Gold** : Données enrichies (scripts de classification et d'analytique). Catégorisation des sports, analyse des tendances et des mots-clés, puis chargement dans le Data Warehouse.
+- **Gold** : Données enrichies (scripts de classification et d'analytique). Catégorisation des sports, **extraction automatique de mots-clés (Keywords)** pour l'analyse de fréquences, puis chargement dans le Data Warehouse.
 
 ### 2.4. Orchestration
 L'ensemble des pipelines (Scraping -> Cleaning -> Classification -> Gold -> Load_to_DB) est orchestré par **Apache Airflow**. Un DAG (Directed Acyclic Graph) gère la planification horaire et la reprise sur erreur.
@@ -36,15 +36,19 @@ Nous évaluons trois dimensions principales :
 **Traçabilité et Monitoring :**
 Toutes les anomalies détectées lors du traitement Silver sont quantifiées et enregistrées dans un rapport généré automatiquement : `data/silver/data_quality_report.json`. Ce fichier garantit la gouvernance et permet un audit transparent sur le volume d'articles rejetés et leurs raisons (titre manquant, contenu trop court, date invalide).
 
-## 4. Guide de Démarrage Rapide
+## 4. Guide de Démarrage Rapide (Automatisé)
 
-1. Lancer l'infrastructure complète via Docker Compose :
+1. Lancer l'infrastructure complète et surveiller l'état de santé du système :
    ```bash
-   docker compose up -d
+   ./start.sh
    ```
-2. Accéder à l'interface d'orchestration Airflow : `http://localhost:8080` (admin/admin).
-3. Le flux Streaming (Kafka) démarre automatiquement avec Docker. Pour suivre l'ingestion en direct :
-   ```bash
-   docker logs -f sports_kafka_producer
-   ```
-4. Explorer les données et créer des Dashboards : `http://localhost:3000` (Metabase).
+   *(Ou `.\start.bat` sous Windows PowerShell)*
+   Ce script garantit que **PostgreSQL**, **Kafka** et le **Streaming** sont prêts avant de vous rendre la main.
+
+2. Accéder aux outils :
+   - Airflow : `http://localhost:8080` (admin/admin).
+   - Metabase : `http://localhost:3000` (Analyses en temps réel).
+   - MinIO : `http://localhost:9001` (Exploration du Data Lake).
+
+3. Visualisation des Top Mots :
+   Grâce à la nouvelle colonne `keywords`, vous pouvez désormais grouper par mots-clés dans Metabase pour identifier instantanément les sujets brûlants (ex: transfert, penalty, victoire).
