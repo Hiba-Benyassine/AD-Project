@@ -232,6 +232,13 @@ Les catégories autorisées sont `football`, `tennis`, `basketball` et `other`. 
 
 Idées de visualisations et guide de configuration : [`dashboard/README.md`](dashboard/README.md).
 
+## Équipe
+
+| Nom | Profil GitHub |
+| --- | --- |
+| **AYOGNIDE Riyadh A. A.** | [@riyadh03](https://github.com/riyadh03) |
+| **Hiba Benyassine** | [@Hiba-Benyassine](https://github.com/Hiba-Benyassine) |
+
 ## Documentation complémentaire
 
 - [Périmètre du projet](project_scope.md)
