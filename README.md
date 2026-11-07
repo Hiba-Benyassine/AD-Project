@@ -1,237 +1,195 @@
-# Distributed Sports Data Platform
+<div align="center">
 
-## 1) Project Goal
+# Sports Data Platform
 
-This project is an end-to-end Data Engineering platform focused on **sports news**.
-It automatically collects articles, stores raw data, cleans and enriches records,
-builds analytics datasets, loads a warehouse, and exposes dashboards.
+### Plateforme de collecte, de traitement et d’analyse d’actualités sportives
 
-The objective is to show a **complete data application** (not just scripts):
+**Scraping · Kafka · MinIO · Airflow · PostgreSQL · Metabase**
 
-- automated ingestion
-- layered data lake (Bronze / Silver / Gold)
-- orchestration with Airflow
-- analytical storage in PostgreSQL
-- BI visualization with Metabase
+[Architecture](#-architecture) · [Démarrage](#-démarrage-rapide) · [Pipeline](#-pipelines-de-données) · [Structure](#-structure-du-projet)
 
-## 2) Scope and Controlled Categories
-
-To avoid inconsistent labels and data chaos, category values are restricted to:
-
-- football
-- tennis
-- basketball
-- other
-
-These values are enforced in the processing layer and in SQL constraints.
-
-## 3) Key Features
-
-- **Architecture Médaillon (Bronze/Silver/Gold)** : Traitement structuré et immuable des données.
-- **Real-time Keywords Extraction** : Extraction automatique de termes sportifs clés (match, but, mercato, etc.) dès l'ingestion.
-- **Hybrid Streaming Pipeline** : Ingestion Kafka avec dédoublonnement temps réel et injection directe en base.
-- **Monitoring Health Check** : Scripts de démarrage (`start.sh`/`start.bat`) avec validation automatique de la santé des services.
-- **Historical Backfill** : Utilitaire de récupération massive des données historiques pour peupler instantanément la plateforme.
-
-## 4) Global Architecture
-
-1. Scrapers collect articles from selected media websites.
-2. Ingestion stores raw JSON records in Bronze.
-3. Cleaning produces normalized records in Silver.
-4. **Classification adds a fixed sports category using hierarchical strategy: URL patterns → keywords → regex patterns**.
-5. Gold layer computes aggregated analytics.
-6. Warehouse stores cleaned articles and stats tables.
-7. Metabase reads warehouse tables for dashboards.
-8. Airflow orchestrates and monitors all steps.
-
-## 4) Repository Structure
-
-```text
-project/
-├── docker-compose.yml
-├── requirements.txt
-├── .gitignore
-├── scrapers/
-│   ├── national/
-│   │   ├── base_scraper.py         # Classe de base
-│   │   ├── sport360_scraper.py     # Web scraping
-│   │   └── lematin_scraper.py      # Web scraping
-│   └── international/
-│       ├── base_scraper.py         # Classe de base
-│       ├── espn_scraper.py         # RSS feed
-│       └── lequipe_scraper.py      # RSS feed
-├── ingestion/
-│   └── batch_pipeline.py
-├── processing/
-│   ├── cleaning.py
-│   ├── classification.py
-│   └── gold_analytics.py
-├── airflow/
-│   └── dags/
-│       └── pipeline_dag.py
-├── warehouse/
-│   ├── schema.sql
-│   └── load_to_postgres.py
-├── dashboard/
-│   └── README.md
-└── data/
-    ├── bronze/
-    ├── silver/
-    └── gold/
-```
-
-## 5) Scraper Strategy: Hybrid Approach (RSS + Web Scraping)
-
-### RSS Feed Strategy (Recommended for major sites)
-
-**Used for**: ESPN, L'Équipe
-
-**Advantages**:
-
-- ✅ Stable & predictable format (XML structure guaranteed)
-- ✅ Fast (lightweight vs HTML parsing)
-- ✅ Respectful to servers (no excessive scraping)
-- ✅ Less prone to breakage (no CSS selector fragility)
-
-**Implementation**: Parse XML RSS feeds, extract `<item>` elements with links, then fetch full article content from URLs.
-
-### Web Scraping Strategy (For smaller sites)
-
-**Used for**: 360Sport.ma, Le Matin.ma
-
-**Advantages**:
-
-- ✅ Access to full content immediately (no RSS available)
-- ✅ Direct control over selectors and extraction
-
-**Implementation**: Parse HTML with BeautifulSoup, extract article URLs with CSS selectors, then fetch full content.
-
-### Unified Data Extraction
-
-All scrapers (RSS or Web) must provide these fields:
-
-```json
-{
-  "source": "360Sport|LeMatinMA|ESPN|LEquipe",
-  "url": "https://...",
-  "title": "Article title",
-  "content": "Full article text",
-  "published_at": "2026-05-09T10:30:00Z",
-  "scraped_at": "2026-05-09T10:35:00Z",
-  "author": "Author name or null",
-  "category": "football|tennis|basketball|other"
-}
-```
+</div>
 
 ---
 
-## 6) Data Contract (Article)
+## Présentation
 
-Minimal fields expected from all scrapers (RSS or Web):
+**Sports Data Platform** est un projet d’ingénierie des données de bout en bout consacré aux actualités sportives. Il collecte des articles depuis plusieurs médias, les transforme en données exploitables, puis les rend disponibles pour l’analyse et la visualisation.
 
-- source: media source name (360Sport, LeMatinMA, ESPN, LEquipe)
-- url: article URL
-- title: article title
-- content: raw textual content
-- published_at: publication datetime (string ISO)
-- scraped_at: ingestion datetime generated by scraper
-- author: article author (if available, else null)
-- language: optional at scrape stage, required after cleaning
+Le dépôt propose deux modes complémentaires :
 
-## 7) Sports Classification Strategy
+- **Batch** : traitement orchestré par Airflow, depuis la collecte jusqu’au chargement analytique.
+- **Streaming** : détection périodique de nouveaux articles, transmission par Kafka et écriture dans MinIO et PostgreSQL.
 
-Articles are automatically categorized into controlled sports categories using a hierarchical approach:
+> Les sources, la disponibilité des articles et les résultats de collecte dépendent des sites consultés.
 
-1. **URL Pattern Matching (Highest Priority)**: Direct classification based on URL structure
-   - `/football/`, `/soccer/`, `/fifa/`, `/uefa/` → football
-   - `/tennis/`, `/atp/`, `/wta/`, `/grand-slam/` → tennis
-   - `/basketball/`, `/nba/`, `/euroleague/` → basketball
+## Fonctionnalités
 
-2. **Keyword Matching (Medium Priority)**: Search in title and content
-   - Football: "premier league", "champions league", "world cup"
-   - Tennis: "roland garros", "us open", "wimbledon"
-   - Basketball: "nba", "playoffs", "dunk"
+| Fonctionnalité | Description |
+| --- | --- |
+| Collecte multi-sources | Scrapers pour 360Sport, Le Matin, ESPN et L’Équipe |
+| Deux modes d’ingestion | Pipeline batch et flux Kafka |
+| Architecture médaillon | Données organisées en couches Bronze, Silver et Gold |
+| Préparation des données | Nettoyage, normalisation, déduplication et contrôles qualité |
+| Classification sportive | Catégories contrôlées : football, tennis, basketball et other |
+| Analytique | Statistiques par date, source et catégorie, ainsi que mots fréquents |
+| Orchestration | DAG Airflow planifié toutes les heures |
+| Visualisation | PostgreSQL comme entrepôt et Metabase pour les tableaux de bord |
 
-3. **Regex Patterns (Lowest Priority)**: Complex pattern matching for edge cases
+## Architecture
 
-4. **Default**: "other" category for uncategorized articles
+```mermaid
+flowchart LR
+    subgraph Sources[Sources d’actualités]
+        S1[360Sport]
+        S2[Le Matin]
+        S3[ESPN]
+        S4[L’Équipe]
+    end
 
-This strategy ensures high accuracy while maintaining deterministic results.
+    subgraph Batch[Pipeline batch · Airflow]
+        B1[Scrapers] --> B2[Bronze]
+        B2 --> B3[Nettoyage · Silver]
+        B3 --> B4[Classification]
+        B4 --> B5[Analytique · Gold]
+        B5 --> B6[(PostgreSQL)]
+    end
 
-## 8) Data Quality Rules
+    subgraph Stream[Pipeline streaming · Kafka]
+        P[Producer] --> K[Kafka · news_stream]
+        K --> C[Consumer]
+        C --> M[(MinIO · Bronze)]
+        C --> PG[(PostgreSQL)]
+    end
 
-At cleaning / load stage, enforce:
+    Sources --> B1
+    Sources --> P
+    B6 --> MB[Metabase]
+    PG --> MB
+    A[Airflow · planification horaire] -. orchestre .-> B1
+```
 
-- title IS NOT NULL and not empty
-- content length >= 100 chars
-- published_at is parseable date
-- category in controlled set
+### Couches de données
 
-Invalid records are skipped (or can be routed to a quarantine file in future).
+| Couche | Rôle | Exemple de sortie |
+| --- | --- | --- |
+| **Bronze** | Conserver les articles collectés au format brut | `data/bronze/` et bucket MinIO `bronze` |
+| **Silver** | Nettoyer, normaliser, dédupliquer et valider les articles | `articles_clean.json`, `articles_classified.json` |
+| **Gold** | Préparer les agrégats destinés à l’analyse | `articles_stats.json`, `top_words.json` |
 
-## 9) Bronze, Silver, Gold Definitions
+### Étapes du pipeline batch
 
-- Bronze: raw JSON lines, no transformation.
-- Silver: cleaned and standardized records.
-- Gold: analytical aggregates (daily counts, source counts, category counts).
+```mermaid
+flowchart LR
+    A[Scraping] --> B[Nettoyage]
+    B --> C[Classification]
+    C --> D[Calcul des indicateurs]
+    D --> E[Chargement PostgreSQL]
+    E --> F[Tableaux de bord Metabase]
+```
 
-## 10) Warehouse Model
+Airflow exécute les étapes dans cet ordre : `scraping_task` → `cleaning_task` → `classification_task` → `gold_task` → `load_to_db`.
 
-- articles_clean: one row per validated article.
-- articles_stats: aggregated KPIs by date/source/category.
+## Technologies
 
-See SQL in `warehouse/schema.sql`.
+| Domaine | Technologies |
+| --- | --- |
+| Langage | Python |
+| Collecte et traitement | Requests, BeautifulSoup, pandas |
+| Streaming | Apache Kafka, kafka-python |
+| Stockage objet | MinIO, client S3 `boto3` |
+| Orchestration | Apache Airflow |
+| Entrepôt de données | PostgreSQL |
+| Visualisation | Metabase |
+| Environnement local | Docker Compose |
 
-## 11) Run Locally
+## Structure du projet
 
-### 11.1 Prerequisites
+```text
+.
+├── airflow/                 # DAGs et configuration Airflow
+│   └── dags/pipeline_dag.py
+├── dashboard/               # Guide et documentation du dashboard
+├── data/                    # Données locales Bronze / Silver / Gold
+├── ingestion/               # Entrées batch et Kafka
+├── processing/              # Nettoyage, classification et analytics
+├── scrapers/                 # Collecteurs par source
+├── warehouse/               # Schéma SQL et chargement PostgreSQL
+├── docker-compose.yml       # Services de la plateforme
+├── Dockerfile
+├── requirements.txt
+├── start.sh / start.bat     # Scripts de démarrage
+└── README.md
+```
 
-- Docker + Docker Compose
-- Python 3.11+ (optional for running scripts outside containers)
+## Démarrage rapide
 
-### 11.2 Start stack (Recommended)
+### Prérequis
 
-Utilisez les scripts de démarrage automatisés pour lancer l'infrastructure et vérifier que tous les processus (Base de données, Kafka, Streaming) sont opérationnels :
+- Docker et Docker Compose
+- Git
+- Python 3.11+ uniquement si vous exécutez les scripts Python directement sur l’hôte
 
-**Sur Linux / Mac / Git Bash :**
+### 1. Récupérer le projet
+
+```bash
+git clone https://github.com/Hiba-Benyassine/AD-Project.git
+cd AD-Project
+```
+
+### 2. Démarrer les services
+
+**Linux / macOS / Git Bash**
+
 ```bash
 chmod +x start.sh
 ./start.sh
 ```
 
-**Sur Windows (PowerShell/CMD) :**
-```cmd
-.\start.bat
+**Windows**
+
+```bat
+start.bat
 ```
 
-Ces scripts lancent `docker compose up -d` et affichent un tableau de bord de santé des services.
+Ou, sans script de démarrage :
 
-### 11.3 MinIO buckets
+```bash
+docker compose up -d
+```
 
-Le service `minio_init` crée automatiquement les buckets suivants à chaque démarrage :
+Le premier démarrage peut prendre quelques minutes, le temps que les conteneurs s’initialisent.
 
-- `bronze`
-- `silver`
-- `gold`
-
-Vous pouvez vérifier leur présence dans la console MinIO.
-
-### 11.4 Access UIs
-
-- Airflow UI: http://localhost:8080
-- MinIO Console: http://localhost:9001
-- Metabase: http://localhost:3000
-- PostgreSQL: localhost:5432
-
-### 11.5 Create DB schema
+### 3. Initialiser le schéma PostgreSQL
 
 ```bash
 docker compose exec -T postgres psql -U sports_user -d sports_warehouse < warehouse/schema.sql
 ```
 
-### 11.6 Run one batch manually (optional)
+### 4. Ouvrir les interfaces
+
+| Service | Adresse | Identifiants initiaux / remarques |
+| --- | --- | --- |
+| Airflow | [http://localhost:8080](http://localhost:8080) | `admin` / `admin` |
+| MinIO Console | [http://localhost:9001](http://localhost:9001) | `minioadmin` / `minioadmin` |
+| Metabase | [http://localhost:3000](http://localhost:3000) | Suivre l’assistant de première configuration |
+| PostgreSQL | `localhost:5432` | Base `sports_warehouse`, utilisateur `sports_user` |
+| Kafka | `localhost:9092` | Broker exposé pour les clients depuis l’hôte |
+
+> Ces identifiants sont des valeurs de développement définies dans `docker-compose.yml`. Ne les réutilisez pas dans un environnement exposé ou de production.
+
+Les buckets MinIO `bronze`, `silver` et `gold` sont créés par le service `minio_init`.
+
+## Pipelines de données
+
+### Batch avec Airflow
+
+Le DAG `sports_data_pipeline` est planifié toutes les heures. Il est créé en pause à l’initialisation : ouvrez Airflow et activez-le si vous souhaitez lancer les exécutions planifiées.
+
+Pour exécuter manuellement les traitements depuis l’environnement Python local, installez les dépendances puis lancez les étapes dans l’ordre :
 
 ```bash
+pip install -r requirements.txt
 python ingestion/batch_pipeline.py
 python processing/cleaning.py
 python processing/classification.py
@@ -239,131 +197,59 @@ python processing/gold_analytics.py
 python warehouse/load_to_postgres.py
 ```
 
-## 12) Tâche 4: Airflow + PostgreSQL
+### Streaming avec Kafka
 
-### Purpose
+Le service producer vérifie périodiquement les sources (cycle de 60 secondes), publie les nouveaux articles sur le topic `news_stream`, puis le consumer les enregistre dans MinIO et PostgreSQL.
 
-Automatically orchestrate and monitor the complete ETL pipeline on a daily schedule.
+Les services Kafka, producer et consumer sont définis dans `docker-compose.yml` et démarrent avec `docker compose up -d`. Pour consulter leurs journaux :
 
-### How It Works
-
-**1. Airflow DAG (Directed Acyclic Graph)**
-
-The DAG in `airflow/dags/pipeline_dag.py` orchestrates these steps sequentially:
-
-```
-scraping_task → cleaning_task → classification_task → gold_task → load_to_db
+```bash
+docker compose logs -f kafka-producer kafka-consumer
 ```
 
-**2. Task Sequence**
+### Arrêter les services
 
-- **scraping_task**: Run all scrapers (360Sport, LeMatinMA, ESPN, LEquipe)
-  - RSS feeds: ESPN, LEquipe (reliable, structured)
-  - Web scraping: 360Sport, LeMatinMA (direct extraction)
-  - Output: JSON files in `data/bronze/`
-
-- **cleaning_task**: Normalize and validate all articles
-  - Input: `data/bronze/*.json`
-  - Output: `data/silver/articles_clean.json`
-  - Handles: author, published_at, source detection
-
-- **classification_task**: Assign sports categories
-  - Strategy: URL patterns → keywords → regex → "other"
-  - Output: `data/silver/articles_classified.json`
-
-- **gold_task**: Compute aggregated metrics
-  - Counts by date, source, and category
-  - Output: `data/gold/articles_stats.json`
-
-- **load_to_db**: Insert cleaned data into PostgreSQL
-  - Tables: `articles_clean`, `articles_stats`
-
-**3. Metadata Extraction Strategy (RSS vs Web Scraping)**
-
-| Field            | RSS                               | Web Scraping                    |
-| ---------------- | --------------------------------- | ------------------------------- |
-| **title**        | `<title>` or fetch from URL       | CSS selector on page            |
-| **content**      | `<description>` or fetch full URL | Extract from article div        |
-| **author**       | `<creator>` meta tag              | CSS `.author` or `.by-line`     |
-| **published_at** | `<pubDate>` in RSS                | `<time>` tag or meta tags       |
-| **source**       | Hardcoded (ESPN, LEquipe)         | Hardcoded (360Sport, LeMatinMA) |
-| **url**          | `<link>` in RSS                   | Extract from `<a>` href         |
-| **category**     | Detect from URL or keywords       | Detect from URL or keywords     |
-
-### PostgreSQL Schema
-
-```sql
-CREATE TABLE articles_clean (
-  article_id SERIAL PRIMARY KEY,
-  source VARCHAR(50) NOT NULL,
-  url VARCHAR(500) UNIQUE NOT NULL,
-  title VARCHAR(255) NOT NULL,
-  content TEXT NOT NULL,
-  published_at TIMESTAMP NOT NULL,
-  scraped_at TIMESTAMP NOT NULL,
-  author VARCHAR(100),
-  category VARCHAR(20) CHECK (category IN ('football', 'tennis', 'basketball', 'other')),
-  language VARCHAR(10),
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE articles_stats (
-  stat_id SERIAL PRIMARY KEY,
-  event_date DATE NOT NULL,
-  source VARCHAR(50) NOT NULL,
-  category VARCHAR(20) NOT NULL,
-  article_count INT NOT NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  UNIQUE(event_date, source, category)
-);
+```bash
+docker compose down
 ```
+
+Pour supprimer également les volumes persistants (données PostgreSQL et MinIO) :
+
+```bash
+docker compose down -v
+```
+
+> Attention : la commande avec `-v` efface les données enregistrées dans les volumes Docker.
+
+## Modèle analytique
+
+| Table | Contenu |
+| --- | --- |
+| `articles_clean` | Articles nettoyés et classifiés, avec source, dates, langue et mots-clés |
+| `articles_stats` | Nombre d’articles par date, source et catégorie |
+
+Les catégories autorisées sont `football`, `tennis`, `basketball` et `other`. Le schéma et ses contraintes sont définis dans [`warehouse/schema.sql`](warehouse/schema.sql).
+
+Idées de visualisations et guide de configuration : [`dashboard/README.md`](dashboard/README.md).
+
+## Documentation complémentaire
+
+- [Périmètre du projet](project_scope.md)
+- [Architecture du dashboard](dashboard/architecture.md)
+- [Guide du dashboard Metabase](dashboard/README.md)
+- [Documentation des scrapers](scrapers/README.md)
+- [Schéma de la base de données](warehouse/schema.sql)
+
+## Configuration
+
+Les services de développement utilisent les valeurs définies dans `docker-compose.yml`. Pour l’upload batch vers MinIO, `ingestion/batch_pipeline.py` accepte les variables `MINIO_ENDPOINT`, `MINIO_ACCESS_KEY`, `MINIO_SECRET_KEY` et `MINIO_BUCKET` (par défaut `bronze`). Un exemple de fichier est disponible dans [`.env.example`](.env.example).
+
+Ne placez pas de secrets personnels ou de production dans le dépôt. Les valeurs d’exemple sont destinées uniquement à un environnement local.
 
 ---
 
-## 13) Airflow DAG Pipeline
+<div align="center">
 
-DAG tasks order:
+**Projet d’ingénierie des données — actualités sportives**
 
-1. scraping_task
-2. cleaning_task
-3. classification_task
-4. gold_task
-5. load_to_db
-
-DAG source: `airflow/dags/pipeline_dag.py`.
-
-## 14) Dashboard Suggestions (Metabase)
-
-Create charts on top of warehouse tables:
-
-- number of articles per day
-- number of articles per source
-- number of articles per sport category
-- frequent terms (advanced optional)
-
-## 15) Governance and Documentation
-
-- Source websites are explicitly listed in scrapers.
-- Data transformations are documented in processing scripts.
-- Schema and constraints are documented in SQL.
-- Categories are closed and controlled.
-
-## 16) Advanced Features
-
-### 16.1 Real-time Keyword Extraction
-Le système utilise désormais un extracteur de mots-clés (`processing/cleaning.py`) qui identifie les termes sportifs (match, but, mercato, etc.) dès l'ingestion Kafka. Ces données sont stockées dans la colonne `keywords` de PostgreSQL.
-
-### 16.2 Real-time Dashboarding (Low Latency)
-Pour offrir une expérience premium, le `kafka-consumer` contourne le délai d'une heure d'Airflow en écrivant les articles directement dans PostgreSQL. Les dashboards Metabase reflètent les nouvelles publications en quelques secondes.
-
-### 16.3 Monitoring & Health Dashboard
-Le script `start.sh` (ou `start.bat`) ne se contente pas de lancer Docker. Il vérifie activement la connectivité à PostgreSQL, Kafka et MinIO, et valide que le flux de streaming est "Live" avant de confirmer le démarrage.
-
-### 16.4 Historical Backfill Utility
-Un script dédié (`backfill_last_4_days.py`) permet de remonter dans le temps sur toutes les sources pour peupler instantanément la plateforme avec plusieurs centaines d'articles récents.
-
-## 17) Future Enhancements
-
-- Add language detection library for better quality.
-- Add Spark for large-scale transformations.
-- Add Great Expectations for data quality monitoring.
+</div>
